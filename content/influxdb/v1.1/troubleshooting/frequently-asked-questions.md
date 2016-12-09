@@ -71,6 +71,10 @@ Where applicable, it links to outstanding issues on GitHub.
 * [When should I single quote and when should I double quote when writing data?](#when-should-i-single-quote-and-when-should-i-double-quote-when-writing-data)  
 * [Does the precision of the timestamp matter?](#does-the-precision-of-the-timestamp-matter)
 
+**Deleting data**
+
+* [How do DROP MEASUREMENT statements work?](#how-do-drop-measurement-statements-work)   
+
 ## How do I include a single quote in a password?
 Escape the single quote with a backslash (`\`) both when creating the password
 and when authentication requests.
@@ -972,3 +976,6 @@ curl -i -XPOST "http://localhost:8086/write?db=weather" --data-binary 'temperatu
 
 curl -i -XPOST "http://localhost:8086/write?db=weather&precision=s" --data-binary 'temperature,location=1 value=90 1472666050'
 ```
+
+## How do DROP MEASUREMENT statements work?
+
