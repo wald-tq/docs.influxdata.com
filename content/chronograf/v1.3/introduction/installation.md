@@ -6,8 +6,8 @@ menu:
     parent: Introduction
 ---
 
-This page provides the requirements for installing, starting, and configuring Chronograf.
-For the fastest way to get up and running with Chronograf, see the [Getting Started](/chronograf/v1.3/introduction/getting-started/) guide.
+This page provides the requirements for installing, configuring, and starting Chronograf.
+For the fastest way to get up and running, see the [Getting Started](/chronograf/v1.3/introduction/getting-started/) guide.
 
 ### Content
 
@@ -22,23 +22,23 @@ For the fastest way to get up and running with Chronograf, see the [Getting Star
 Installation of the Chronograf package may require `root` or administrator privileges to complete successfully.
 
 ### TICK
-Chronograf is the UI for the other components of the [TICK stack](https://www.influxdata.com/products/): Telegraf, InfluxDB/InfluxEnterprise Clustering, and Kapacitor.
+Chronograf is the UI that ties together the other components of the [TICK stack](https://www.influxdata.com/products/): Telegraf, InfluxDB/InfluxEnterprise Clustering, and Kapacitor.
 You do not need to install every component of the TICK stack to use Chronograf.
-The following sections give a brief description of the other TICK stack components, how they fit within Chronograf, and if they are necessary for your setup.
+The following sections briefly describe the other components, how they fit within Chronograf, and whether they are required.
 
 #### Telegraf (required)
-[Telegraf](/telegraf/v1.2/) is InfluxData's plugin-driven server agent for collecting & reporting metrics.
-Telegraf collects data and writes data to the InfluxDB instance or InfluxEnterprise cluster that's connected to Chronograf.
+[Telegraf](/telegraf/v1.2/) is InfluxData's plugin-driven server agent for collecting and reporting metrics.
+Telegraf periodically gathers data from its environment and sends it to InfluxDB for storage.
 Chronograf is designed to work with Telegraf data and offers [pre-created dashboards](/chronograf/v1.3/troubleshooting/frequently-asked-questions/#what-applications-are-supported-in-chronograf) for several Telegraf input plugins.
 
-Chronograf requires at least one Telegraf instance that collects data and writes the data to an InfluxDB instance or InfluxEnterprise cluster.
-At a minimum, the Telegraf instance must have enabled the [system statistics](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/system) input plugin; that input plugin provides the system-level data necessary for the Chronograf interface. 
+Chronograf requires at least one Telegraf instance that is collecting and reporting data to an InfluxDB instance.
+At a minimum, the Telegraf instance must have enabled the [system statistics](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/system) input plugin, which provides the system-level data necessary for the Chronograf interface.
 
 **Installation Resources:**
 
 * [Getting Started](/chronograf/v1.3/introduction/getting-started/) offers setup instructions for using Chronograf and InfluxDB with one Telegraf instance
 * [Monitor an InfluxEnterprise Cluster](/chronograf/v1.3/guides/monitor-an-influxenterprise-cluster/) offers setup instructions for using Chronograf and an InfluxEnterprise Cluster with several Telegraf instances
-* [Telegraf Documentation](/telegraf/v1.2/) 
+* [Telegraf Documentation](/telegraf/v1.2/)
 
 #### InfluxDB/InfluxEnterprise cluster (required)
 [InfluxDB](/influxdb/v1.2/) is InfluxData's open source time-series database built from the ground up to handle high write and query loads.
@@ -52,8 +52,8 @@ A single Chronograf instance can support several InfluxDB instances or InfluxEnt
 
 * [Getting Started](/chronograf/v1.3/introduction/getting-started/) offers setup instructions for using Chronograf with an InfluxDB instance
 * [Monitor an InfluxEnterprise Cluster](/chronograf/v1.3/guides/monitor-an-influxenterprise-cluster/) offers setup instructions for using Chronograf with an InfluxEnterprise Cluster
-* [InfluxDB Documentation](/influxdb/v1.2/) 
-* [InfluxEnterprise Documentation](/enterprise/v1.2/) 
+* [InfluxDB Documentation](/influxdb/v1.2/)
+* [InfluxEnterprise Documentation](/enterprise/v1.2/)
 
 #### Kapacitor (optional)
 [Kapacitor](/kapacitor/v1.2/) is InfluxData’s processing framework for creating alerts, running ETL jobs, and detecting anomalies in your data.
@@ -69,7 +69,7 @@ You do not need a Kapacitor instance if you plan on only using Chronograf's host
 
 * [Getting Started](/chronograf/v1.3/introduction/getting-started/) offers setup instructions for using Chronograf with a Kapacitor instance
 * [Configure Kapacitor Event Handlers](/chronograf/v1.3/guides/configure-kapacitor-event-handlers/) offers setup instructions for Kapacitor event handlers in Chronograf
-* [Kapacitor Documentation](/kapacitor/v1.2/) 
+* [Kapacitor Documentation](/kapacitor/v1.2/)
 
 ### Networking
 
@@ -85,4 +85,3 @@ See Chronograf's [README](https://github.com/influxdata/chronograf/blob/master/R
 
 See the [Configuration](/chronograf/v1.3/administration/configuration/) document for a description of the available configuration options.
 See [Security Best Practices](/chronograf/v1.3/administration/security-best-practices/) for TLS and OAUTH 2.0 setup instructions.
-
