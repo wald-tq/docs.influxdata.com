@@ -1,7 +1,7 @@
 ---
 title: Step 2 - Data Node Installation
 menu:
-  enterprise_1_0:
+  enterprise_influxdb_1_0:
     weight: 20
     parent: Introduction
 ---
@@ -12,7 +12,7 @@ The next steps will get you up and running with the second essential component o
 your InfluxEnterprise cluster: the data nodes.
 
 If you have not set up your meta nodes, please visit
-[Meta Node Installation](/enterprise/v1.0/introduction/meta_node_installation/).
+[Meta Node Installation](/enterprise_influxdb/v1.0/introduction/meta_node_installation/).
 Bad things can happen if you complete the following steps without meta nodes.
 
 # Requirements
@@ -20,7 +20,7 @@ Bad things can happen if you complete the following steps without meta nodes.
 To get started, you'll need the license key that you received at
 [InfluxPortal](https://portal.influxdata.com/) as well as several servers.
 The steps below set up two
-[data nodes](/enterprise/v1.0/concepts/glossary#data-node) with each data node
+[data nodes](/enterprise_influxdb/v1.0/concepts/glossary#data-node) with each data node
 on its own server.
 
 Please note that there is no requirement to use that number of servers.
@@ -28,7 +28,7 @@ The data processes can run on the same or different servers.
 For high availability and redundancy your cluster should have at least two
 data nodes.
 See the
-[Clustering Guide](/enterprise/v1.0/concepts/clustering.md#optimal-server-counts)
+[Clustering Guide](/enterprise_influxdb/v1.0/concepts/clustering.md#optimal-server-counts)
 for more on cluster architecture.
 
 The data node servers will need to be able to reach `portal.influxdata.com`
@@ -161,7 +161,7 @@ You should see output similar to:
     influxdb  2706  0.2  7.0 571008 35376 ?        Sl   15:37   0:16 /usr/bin/influxd -config /etc/influxdb/influxdb.conf
 
 
-If you do not see the expected output, the process is either not launching or is exiting prematurely. Check the [logs](/enterprise/v1.0/administration/logs/) for error messages and verify the previous setup steps are complete.
+If you do not see the expected output, the process is either not launching or is exiting prematurely. Check the [logs](/enterprise_influxdb/v1.0/administration/logs/) for error messages and verify the previous setup steps are complete.
 
 If you see the expected output, repeat for the remaining data nodes.
 Once all data nodes have been installed, configured, and launched, move on to the next section to join the data nodes to the cluster.
@@ -169,7 +169,7 @@ Once all data nodes have been installed, configured, and launched, move on to th
 ## Join the data nodes to the cluster
 
 On one and only one of the meta nodes that you set up in the
-[previous document](/enterprise/v1.0/introduction/meta_node_installation/), run:
+[previous document](/enterprise_influxdb/v1.0/introduction/meta_node_installation/), run:
 ```
 influxd-ctl add-data enterprise-data-01:8088
 
@@ -215,4 +215,4 @@ If you do not see your data nodes in the output, please retry adding them
 to the cluster.
 
 Once your data nodes are part of your cluster move on to [the final step
-to set up the InfluxEnterprise web console](/enterprise/v1.0/introduction/web_console_installation/).
+to set up the InfluxEnterprise web console](/enterprise_influxdb/v1.0/introduction/web_console_installation/).

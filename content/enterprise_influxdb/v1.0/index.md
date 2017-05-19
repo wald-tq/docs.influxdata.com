@@ -1,10 +1,10 @@
 ---
-title: Enterprise Documentation
+title: Enterprise InfluxDB Version 1.0 Documentation
 
 menu:
-  enterprise:
+  enterprise_influxdb:
     name: v1.0
-    identifier: enterprise_1_0
+    identifier: enterprise_influxdb_1_0
     weight: 10
 ---
 

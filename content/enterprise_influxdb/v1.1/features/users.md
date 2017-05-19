@@ -1,7 +1,7 @@
 ---
 title: InfluxEnterprise Users
 menu:
-  enterprise_1_1:
+  enterprise_influxdb_1_1:
     weight: 0
     parent: Features
 ---

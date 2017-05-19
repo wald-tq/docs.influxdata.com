@@ -1,7 +1,7 @@
 ---
 title: Release Notes/Changelog
 menu:
-  enterprise_1_1:
+  enterprise_influxdb_1_1:
     weight: 0
     parent: About the Project
 ---
@@ -210,13 +210,13 @@ users currently running on the Mac OS X platform, powered by the Darwin operatin
 
 ### Features
 
-- Add the [`autologout` configuration setting](/enterprise/v1.1/administration/configuration/#autologout-false) to enable a forced logout on browser close
+- Add the [`autologout` configuration setting](/enterprise_influxdb/v1.1/administration/configuration/#autologout-false) to enable a forced logout on browser close
 
 ## v1.1.0 [2016-11-14]
 
 ### Features
 
-- Add the [`session-lifetime` configuration setting](/enterprise/v1.1/administration/configuration/#session-lifetime-24h) to configure the time after which users are automatically logged out
+- Add the [`session-lifetime` configuration setting](/enterprise_influxdb/v1.1/administration/configuration/#session-lifetime-24h) to configure the time after which users are automatically logged out
 
 ## v1.0.3 [2016-10-07]
 
@@ -249,7 +249,7 @@ This release is for maintaining version parity with clustering.
 
 ### Features
 
-* **Rebalancing:** Rebalancing now ensures that all existing data adhere to the relevant [replication factor](/influxdb/v1.1/concepts/glossary/#replication-factor). See [Web Console Features](/enterprise/v1.1/features/web-console-features/#cluster-rebalancing) for more information.
-* **User updates:** In versions 0.7.2 and below, users were loosely synced between the cluster and web console. In version 1.0, users have web-console-specific functions and are given cluster-specific permissions by being associated with a separate cluster account. The document [InfluxEnterprise Users](/enterprise/v1.1/features/users/) describes the new user arrangement in more detail. Please note that this change requires additional steps if you are [upgrading](/enterprise/v1.1/administration/upgrading/) from a previous version of the web console.
+* **Rebalancing:** Rebalancing now ensures that all existing data adhere to the relevant [replication factor](/influxdb/v1.1/concepts/glossary/#replication-factor). See [Web Console Features](/enterprise_influxdb/v1.1/features/web-console-features/#cluster-rebalancing) for more information.
+* **User updates:** In versions 0.7.2 and below, users were loosely synced between the cluster and web console. In version 1.0, users have web-console-specific functions and are given cluster-specific permissions by being associated with a separate cluster account. The document [InfluxEnterprise Users](/enterprise_influxdb/v1.1/features/users/) describes the new user arrangement in more detail. Please note that this change requires additional steps if you are [upgrading](/enterprise_influxdb/v1.1/administration/upgrading/) from a previous version of the web console.
 
 ### Bugfixes

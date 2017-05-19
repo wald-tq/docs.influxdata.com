@@ -1,14 +1,14 @@
 ---
 title: Getting Started
 alias:
-  /enterprise/v1.2/introduction/getting-started/
+  /enterprise_influxdb/v1.2/introduction/getting-started/
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 40
     parent: Introduction
 ---
 
-Now that you successfully [installed and set up](/enterprise/v1.2/introduction/meta_node_installation/) InfluxEnterprise, visit
+Now that you successfully [installed and set up](/enterprise_influxdb/v1.2/introduction/meta_node_installation/) InfluxEnterprise, visit
 `http://<your_web_console_server's_IP_address>:3000` to get started with the
 web console!
 
@@ -17,7 +17,7 @@ When you first visit the web console, it prompts you to:
 #### 1. Name your cluster
 
 The first step is to name the cluster that you setup in the
-[previous documents](/enterprise/v1.2/introduction/meta_node_installation/).
+[previous documents](/enterprise_influxdb/v1.2/introduction/meta_node_installation/).
 Here, we call our cluster `MyCluster`.
 
 ![Name your cluster](/img/enterprise/name_cluster_1.png)
@@ -30,7 +30,7 @@ The `registration-server-url` setting must be a full URL with protocol and port.
 #### 2. Create a Cluster Admin account
 
 Next, create a Cluster Admin account.
-The Cluster Admin account has all [cluster-specific permissions](/enterprise/v1.2/features/users/#permissions).
+The Cluster Admin account has all [cluster-specific permissions](/enterprise_influxdb/v1.2/features/users/#permissions).
 
 We recommend calling this account `ClusterAdmin`.
 Note that you will need to authenticate with the `ClusterAdmin` username and
@@ -41,7 +41,7 @@ web console.
 
 #### 3. Create a Web Admin user
 
-The Web Admin user has all [web-console-specific permissions](/enterprise/v1.2/features/users/#admin-users).
+The Web Admin user has all [web-console-specific permissions](/enterprise_influxdb/v1.2/features/users/#admin-users).
 
 Fill out the form with the Web Admin user's first and last name, associated email address, and password.
 
@@ -55,12 +55,12 @@ permissions.
 
 ### Where to from here?
 
-Check out the [Features](/enterprise/v1.2/features/) section to see all that
+Check out the [Features](/enterprise_influxdb/v1.2/features/) section to see all that
 InfluxEnterprise can do.
 
 Note that the web console requires a functioning SMTP server to email invites
 to new web console users.
 If you're working on Ubuntu 14.04 and are looking for an SMTP server to use for
 development purposes, see the
-[SMTP Server Setup](/enterprise/v1.2/guides/smtp-server/) guide for how to get up
+[SMTP Server Setup](/enterprise_influxdb/v1.2/guides/smtp-server/) guide for how to get up
 and running with [MailCatcher](https://mailcatcher.me/).

@@ -1,7 +1,7 @@
 ---
 title: Backup and Restore
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 0
     parent: Guides
 ---
@@ -51,7 +51,7 @@ influxd-ctl [global-options] backup [backup-options] <path-to-backup-directory>
 
 #### Global options:
 
-Please see the [influxd-ctl documentation](/enterprise/v1.2/features/cluster-commands/#global-options)
+Please see the [influxd-ctl documentation](/enterprise_influxdb/v1.2/features/cluster-commands/#global-options)
 for a complete list of the global `influxd-ctl` options.
 
 #### Backup options:
@@ -196,7 +196,7 @@ The system automatically drops the `_internal` database when it performs a compl
 
 #### Global options:
 
-Please see the [influxd-ctl documentation](/enterprise/v1.2/features/cluster-commands/#global-options)
+Please see the [influxd-ctl documentation](/enterprise_influxdb/v1.2/features/cluster-commands/#global-options)
 for a complete list of the global `influxd-ctl` options.
 
 #### Restore options:
@@ -226,7 +226,7 @@ complete restore.
 
 #### Global options:
 
-Please see the [influxd-ctl documentation](/enterprise/v1.2/features/cluster-commands/#global-options)
+Please see the [influxd-ctl documentation](/enterprise_influxdb/v1.2/features/cluster-commands/#global-options)
 for a complete list of the global `influxd-ctl` options.
 
 #### Restore options:

@@ -2,7 +2,7 @@
 title: Step 1 - Meta Node Installation
 
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 10
     parent: production_installation
     identifier: meta_production
@@ -17,7 +17,7 @@ your InfluxEnterprise cluster: the meta nodes.
 
 > If you wish to evaluate InfluxEnterprise in a non-production
 environment, feel free to follow the instructions outlined in the
-[QuickStart Installation](/enterprise/v1.2/quickstart_installation) section.
+[QuickStart Installation](/enterprise_influxdb/v1.2/quickstart_installation) section.
 Please note that if you install InfluxEnterprise with the QuickStart Installation process you
 will need to reinstall InfluxEnterprise with the Production Installation
 process before using the product in a production environment.
@@ -25,7 +25,7 @@ process before using the product in a production environment.
 <br>
 # Meta Node Setup Description and Requirements
 
-The Production Installation process sets up three [meta nodes](/enterprise/v1.2/concepts/glossary/#meta-node)
+The Production Installation process sets up three [meta nodes](/enterprise_influxdb/v1.2/concepts/glossary/#meta-node)
 and each meta node runs on its own server.
 You **must** have a minimum of three meta nodes in a cluster.
 InfluxEnterprise clusters require at least three meta nodes and an odd number
@@ -35,7 +35,7 @@ are unreliable.
 Note that there is no requirement for each meta node to run on its own server.
 
 See the
-[Clustering Guide](/enterprise/v1.2/concepts/clustering#optimal-server-counts)
+[Clustering Guide](/enterprise_influxdb/v1.2/concepts/clustering#optimal-server-counts)
 for more on cluster architecture.
 
 ### Other Requirements
@@ -211,6 +211,6 @@ If you do not see your meta nodes in the output, please retry adding them to
 the cluster.
 
 Once your meta nodes are part of your cluster move on to [the next steps to
-set up your data nodes](/enterprise/v1.2/production_installation/data_node_installation/).
+set up your data nodes](/enterprise_influxdb/v1.2/production_installation/data_node_installation/).
 Please do not continue to the next steps if your meta nodes are not part of the
 cluster.

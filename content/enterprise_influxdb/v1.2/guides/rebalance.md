@@ -1,7 +1,7 @@
 ---
 title: Cluster Rebalance
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 19
     parent: Guides
 ---
@@ -32,7 +32,7 @@ throughput, follow the steps in
 
 The following sections assume that you already added a new data node to the
 cluster, and they use the
-[`influx-ctl` tool](/enterprise/v1.2/features/cluster-commands/) available on
+[`influx-ctl` tool](/enterprise_influxdb/v1.2/features/cluster-commands/) available on
 all meta nodes.
 
 Before you begin, stop writing historical data to InfluxDB.

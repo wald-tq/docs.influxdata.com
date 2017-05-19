@@ -1,7 +1,7 @@
 ---
 title: Cluster Features
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 20
     parent: Features
 ---
@@ -27,19 +27,19 @@ Meta nodes expose the /debug/pprof endpoints for profiling and troubleshooting.
 
 ## Shard Movement
 
-* [Copy Shard](/enterprise/v1.2/features/cluster-commands/#copy-shard) support - copy a shard from one node to another
-* [Copy Shard Status](/enterprise/v1.2/features/cluster-commands/#copy-shard-status) - query the status of a copy shard request
-* [Kill Copy Shard](/enterprise/v1.2/features/cluster-commands/#kill-copy-shard) - kill a running shard copy
-* [Remove Shard](/enterprise/v1.2/features/cluster-commands/#remove-shard) - remove a shard from a node (this deletes data)
-* [Truncate Shards](/enterprise/v1.2/features/cluster-commands/#truncate-shards) - truncate all active shard groups and start new shards immediately (This is useful when adding nodes or changing replication factors.)
+* [Copy Shard](/enterprise_influxdb/v1.2/features/cluster-commands/#copy-shard) support - copy a shard from one node to another
+* [Copy Shard Status](/enterprise_influxdb/v1.2/features/cluster-commands/#copy-shard-status) - query the status of a copy shard request
+* [Kill Copy Shard](/enterprise_influxdb/v1.2/features/cluster-commands/#kill-copy-shard) - kill a running shard copy
+* [Remove Shard](/enterprise_influxdb/v1.2/features/cluster-commands/#remove-shard) - remove a shard from a node (this deletes data)
+* [Truncate Shards](/enterprise_influxdb/v1.2/features/cluster-commands/#truncate-shards) - truncate all active shard groups and start new shards immediately (This is useful when adding nodes or changing replication factors.)
 
-This functionality is exposed via an API on the meta service and through [`influxd-ctl` sub-commands](/enterprise/v1.2/features/cluster-commands/).
+This functionality is exposed via an API on the meta service and through [`influxd-ctl` sub-commands](/enterprise_influxdb/v1.2/features/cluster-commands/).
 
 ## OSS Conversion
 
 Importing a OSS single server as the first data node is supported.
 
-See [OSS to Cluster Migration](/enterprise/v1.2/guides/migration/) for
+See [OSS to Cluster Migration](/enterprise_influxdb/v1.2/guides/migration/) for
 step-by-step instructions.
 
 ## Query Routing
@@ -51,5 +51,5 @@ If there is a replica on another node, it will retry on that node.
 
 InfluxEnterprise clusters support backup and restore functionality starting with
 version 0.7.1.
-See [Backup and Restore](/enterprise/v1.2/guides/backup-and-restore/) for
+See [Backup and Restore](/enterprise_influxdb/v1.2/guides/backup-and-restore/) for
 more information.

@@ -1,7 +1,7 @@
 ---
 title: Clustering
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 0
     parent: Concepts
 ---

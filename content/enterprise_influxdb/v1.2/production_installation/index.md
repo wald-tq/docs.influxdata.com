@@ -1,7 +1,7 @@
 ---
 title: Production Installation
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 2
     identifier: production_installation
 ---
@@ -11,7 +11,7 @@ InfluxEnterprise in a production environment.
 
 If you wish to evaluate InfluxEnterprise in a non-production
 environment, feel free to follow the instructions outlined in the
-[QuickStart Installation](/enterprise/v1.2/quickstart_installation) section.
+[QuickStart Installation](/enterprise_influxdb/v1.2/quickstart_installation) section.
 Please note that if you install InfluxEnterprise with the QuickStart Installation process you
 will need to reinstall InfluxEnterprise with the Production Installation
 process before using the product in a production environment.
@@ -21,6 +21,6 @@ process before using the product in a production environment.
 
 Follow the links below to get up and running with InfluxEnterprise.
 
-### [Step 1 - Meta Node Installation](/enterprise/v1.2/production_installation/meta_node_installation/)
-### [Step 2 - Data Node Installation](/enterprise/v1.2/production_installation/data_node_installation/)
-### [Step 3 - Web Console Installation](/enterprise/v1.2/production_installation/web_console_installation/)
+### [Step 1 - Meta Node Installation](/enterprise_influxdb/v1.2/production_installation/meta_node_installation/)
+### [Step 2 - Data Node Installation](/enterprise_influxdb/v1.2/production_installation/data_node_installation/)
+### [Step 3 - Web Console Installation](/enterprise_influxdb/v1.2/production_installation/web_console_installation/)

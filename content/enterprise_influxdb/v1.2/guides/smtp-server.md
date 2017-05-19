@@ -1,7 +1,7 @@
 ---
 title: SMTP Server Setup
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 20
     parent: Guides
 ---

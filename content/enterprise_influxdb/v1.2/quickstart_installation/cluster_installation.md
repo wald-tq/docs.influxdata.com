@@ -2,7 +2,7 @@
 title: Step 1 - Cluster Installation
 
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 10
     parent: quickstart_installation
     identifier: meta_quickstart
@@ -15,7 +15,7 @@ InfluxEnterprise cluster.
 
 > The QuickStart Installation process **is not** designed for use
 in a production environment.
-Follow the instructions outlined in the [Production Installation](/enterprise/v1.2/production_installation/) section
+Follow the instructions outlined in the [Production Installation](/enterprise_influxdb/v1.2/production_installation/) section
 if you wish to use InfluxEnterprise in a production environment.
 Please note that if you install InfluxEnterprise with the QuickStart Installation process you
 will need to reinstall InfluxEnterprise with the Production Installation
@@ -26,10 +26,10 @@ process before using the product in a production environment.
 ### Setup Description
 
 The QuickStart Installation process sets up an InfluxEnterprise cluster on three servers.
-Each server is a [meta node](/enterprise/v1.2/concepts/glossary/#meta-node) and
-a [data node](/enterprise/v1.2/concepts/glossary/#data-node), that is, each server
-runs both the [meta service](/enterprise/v1.2/concepts/glossary/#meta-service)
-and the [data service](/enterprise/v1.2/concepts/glossary/#data-service).
+Each server is a [meta node](/enterprise_influxdb/v1.2/concepts/glossary/#meta-node) and
+a [data node](/enterprise_influxdb/v1.2/concepts/glossary/#data-node), that is, each server
+runs both the [meta service](/enterprise_influxdb/v1.2/concepts/glossary/#meta-service)
+and the [data service](/enterprise_influxdb/v1.2/concepts/glossary/#data-service).
 
 ### Requirements
 
@@ -245,7 +245,7 @@ You should see output similar to:
 >
     influxdb  2706  0.2  7.0 571008 35376 ?        Sl   15:37   0:16 /usr/bin/influxd -config /etc/influxdb/influxdb.conf
 >
-If you do not see the expected output, the process is either not launching or is exiting prematurely. Check the [logs](/enterprise/v1.2/administration/logs/) for error messages and verify the previous setup steps are complete.
+If you do not see the expected output, the process is either not launching or is exiting prematurely. Check the [logs](/enterprise_influxdb/v1.2/administration/logs/) for error messages and verify the previous setup steps are complete.
 
 ## Step 4: Join the Nodes to the Cluster
 
@@ -337,5 +337,5 @@ Your cluster should have three data nodes and three meta nodes.
 If you do not see your meta or data nodes in the output, please retry
 adding them to the cluster.
 
-Once all of your nodes are joined to the cluster, move on to the [next step](/enterprise/v1.2/quickstart_installation/web_console_installation/)
+Once all of your nodes are joined to the cluster, move on to the [next step](/enterprise_influxdb/v1.2/quickstart_installation/web_console_installation/)
 in the QuickStart Installation to set up the InfluxEnterprise web console.

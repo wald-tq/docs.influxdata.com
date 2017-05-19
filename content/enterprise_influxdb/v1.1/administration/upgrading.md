@@ -1,7 +1,7 @@
 ---
 title: Upgrading from Previous Versions
 menu:
-  enterprise_1_1:
+  enterprise_influxdb_1_1:
     weight: 0
     parent: Administration
 ---
@@ -18,7 +18,7 @@ menu:
 The `influxd-ctl join` command has been renamed to `influxd-ctl add-meta`. If you have existing scripts that use `influxd-ctl join`, they will need to use `influxd-ctl add-meta` or be updated to use the new cluster setup command.
 
 This release should be a drop-in replacement for 1.0 with no data migration required. There are some configuration changes that need to be updated prior to upgrading to avoid downtime.
-Please review the [Changelog](/enterprise/v1.1/about-the-project/release-notes-changelog/) prior to upgrading.
+Please review the [Changelog](/enterprise_influxdb/v1.1/about-the-project/release-notes-changelog/) prior to upgrading.
 
 ## Upgrading from version 0.7 to 1.1.x
 
@@ -27,11 +27,11 @@ Clustering version 0.7.4 and InfluxEnterprise Web Console version 0.7.1
 to InfluxEnterprise 1.1.
 
 Please note that the upgrade process requires you to delete existing users
-from the web console due to [significant changes](/enterprise/v1.1/about-the-project/release-notes-changelog/#v1-0-0)
+from the web console due to [significant changes](/enterprise_influxdb/v1.1/about-the-project/release-notes-changelog/#v1-0-0)
 to how users function in InfluxEnterprise.
 Once you've completed the upgrade process, any users created prior to version 1.1 will be
-[cluster accounts](/enterprise/v1.1/features/users/#cluster-user-information).
-Please see [InfluxEnterprise Users](/enterprise/v1.1/features/users/) for
+[cluster accounts](/enterprise_influxdb/v1.1/features/users/#cluster-user-information).
+Please see [InfluxEnterprise Users](/enterprise_influxdb/v1.1/features/users/) for
 more information on how InfluxEnterprise organizes users in version 1.1.
 
 > **Note:** Before you start, please review the section at the
@@ -136,7 +136,7 @@ sudo systemctl start influx-enterprise
 Now that you've upgraded to version 1.1, visit `http://<your_web_console_server's_IP_address>:3000`
 to complete the new signup flow.
 
-The [Getting Started](/enterprise/v1.1/introduction/getting_started/) guide offers
+The [Getting Started](/enterprise_influxdb/v1.1/introduction/getting_started/) guide offers
 detailed instructions for how to complete the signup process.
 Don't worry about any existing cluster users for now - we'll take care of
 them in the next step.
@@ -192,7 +192,7 @@ In the `Account Details` section, click the checkbox next to `Admin` and click
 
 
 You've completed the upgrade process for version 1.1.
-Next, check out the [release notes](/enterprise/v1.1/about-the-project/release-notes-changelog/) to
+Next, check out the [release notes](/enterprise_influxdb/v1.1/about-the-project/release-notes-changelog/) to
 see what's new!
 
 ## Configuration settings

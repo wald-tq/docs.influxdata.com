@@ -1,9 +1,9 @@
 ---
 title: Step 1 - Meta Node Installation
 aliases:
-    - enterprise/v1.0/introduction/installation/
+    - enterprise_influxdb/v1.0/introduction/installation/
 menu:
-  enterprise_1_0:
+  enterprise_influxdb_1_0:
     weight: 10
     parent: Introduction
 ---
@@ -18,7 +18,7 @@ your InfluxEnterprise cluster: the meta nodes.
 To get started, you'll need the license key that you received at
 [InfluxPortal](https://portal.influxdata.com/) as well as several servers.
 The steps below set up three
-[meta nodes](/enterprise/v1.0/concepts/glossary/#meta-node) with each meta node
+[meta nodes](/enterprise_influxdb/v1.0/concepts/glossary/#meta-node) with each meta node
 on its own server.
 
 You **must** add 3 meta nodes at minimum while setting up the cluster.
@@ -28,7 +28,7 @@ for high availability and redundancy your cluster should have at least three
 meta nodes and an odd number of meta nodes. 
 More than three meta nodes is not recommended unless the servers are unreliable.
 See the
-[Clustering Guide](/enterprise/v1.0/concepts/clustering#optimal-server-counts)
+[Clustering Guide](/enterprise_influxdb/v1.0/concepts/clustering#optimal-server-counts)
 for more on cluster architecture.
 
 > **Note:** By default, data and meta nodes communicate with each other on
@@ -177,6 +177,6 @@ If you do not see your meta nodes in the output, please retry adding them to
 the cluster.
 
 Once your meta nodes are part of your cluster move on to [the next steps to
-set up your data nodes](/enterprise/v1.0/introduction/data_node_installation/).
+set up your data nodes](/enterprise_influxdb/v1.0/introduction/data_node_installation/).
 Please do not continue to the next steps if your meta nodes are not part of the
 cluster.

@@ -1,7 +1,7 @@
 ---
 title: Cluster Commands
 menu:
-  enterprise_1_0:
+  enterprise_influxdb_1_0:
     weight: 10
     parent: Features
 ---

@@ -1,7 +1,7 @@
 ---
 title: Release Notes/Changelog
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 0
     parent: About the Project
 ---
@@ -41,13 +41,13 @@ Please see the OSS [release notes](https://github.com/influxdata/influxdb/blob/1
 
 ### Configuration Changes
 
-The following configuration changes may need to changed before [upgrading](/enterprise/v1.2/administration/upgrading/) to 1.2.2 from prior versions.
+The following configuration changes may need to changed before [upgrading](/enterprise_influxdb/v1.2/administration/upgrading/) to 1.2.2 from prior versions.
 
 #### shard-writer-timeout
 
 We've removed the data node's `shard-writer-timeout` configuration option from the `[cluster]` section.
 As of version 1.2.2, the system sets `shard-writer-timeout` internally.
-The configuration option can be removed from the [data node configuration file](/enterprise/v1.2/administration/configuration/#data-node-configuration).
+The configuration option can be removed from the [data node configuration file](/enterprise_influxdb/v1.2/administration/configuration/#data-node-configuration).
 
 #### retention-autocreate
 
@@ -65,8 +65,8 @@ This change only affects users who have disabled the `retention-autocreate` opti
 ##### Backup and Restore
 <br>
 
-- Prevent the `shard not found` error by making [backups](/enterprise/v1.2/guides/backup-and-restore/#backup) skip empty shards
-- Prevent the `shard not found` error by making [restore](/enterprise/v1.2/guides/backup-and-restore/#restore) handle empty shards
+- Prevent the `shard not found` error by making [backups](/enterprise_influxdb/v1.2/guides/backup-and-restore/#backup) skip empty shards
+- Prevent the `shard not found` error by making [restore](/enterprise_influxdb/v1.2/guides/backup-and-restore/#restore) handle empty shards
 - Ensure that restores from an incremental backup correctly handle file paths
 - Allow incremental backups with restrictions (for example, they use the `-db` or `rp` flags) to be stores in the same directory
 - Support restores on meta nodes that are not the raft leader
@@ -74,7 +74,7 @@ This change only affects users who have disabled the `retention-autocreate` opti
 ##### Hinted Handoff
 <br>
 
-- Fix issue where dropped writes were not recorded when the [hinted handoff](/enterprise/v1.2/concepts/clustering/#hinted-handoff) queue reached the maximum size
+- Fix issue where dropped writes were not recorded when the [hinted handoff](/enterprise_influxdb/v1.2/concepts/clustering/#hinted-handoff) queue reached the maximum size
 - Prevent the hinted handoff from becoming blocked if it encounters field type errors
 
 ##### Other
@@ -88,8 +88,8 @@ This change only affects users who have disabled the `retention-autocreate` opti
 - Serialize access to the meta client and meta store to prevent raft log buildup
 - Remove sysvinit package dependency for RPM packages
 - Make the default retention policy creation an atomic process instead of a two-step process
-- Prevent `influxd-ctl`'s [`join` argument](/enterprise/v1.2/features/cluster-commands/#join) from completing a join when the command also specifies the help flag (`-h`)
-- Fix the `influxd-ctl`'s [force removal](/enterprise/v1.2/features/cluster-commands/#remove-meta) of meta nodes
+- Prevent `influxd-ctl`'s [`join` argument](/enterprise_influxdb/v1.2/features/cluster-commands/#join) from completing a join when the command also specifies the help flag (`-h`)
+- Fix the `influxd-ctl`'s [force removal](/enterprise_influxdb/v1.2/features/cluster-commands/#remove-meta) of meta nodes
 - Update the meta node and data node sample configuration files
 
 ## v1.2.1 [2017-01-25]
@@ -109,24 +109,24 @@ Please see the OSS [release notes](https://github.com/influxdata/influxdb/blob/1
 
 ### Upgrading
 
-* The `retention-autocreate` configuration option has moved from the meta node configuration file to the [data node configuration file](/enterprise/v1.2/administration/configuration/#retention-autocreate-true).
+* The `retention-autocreate` configuration option has moved from the meta node configuration file to the [data node configuration file](/enterprise_influxdb/v1.2/administration/configuration/#retention-autocreate-true).
 To disable the auto-creation of retention policies, set `retention-autocreate` to `false` in your data node configuration files.
-* The previously deprecated `influxd-ctl force-leave` command has been removed. The replacement command to remove a meta node which is never coming back online is [`influxd-ctl remove-meta -force`](/enterprise/v1.2/features/cluster-commands/).
+* The previously deprecated `influxd-ctl force-leave` command has been removed. The replacement command to remove a meta node which is never coming back online is [`influxd-ctl remove-meta -force`](/enterprise_influxdb/v1.2/features/cluster-commands/).
 
 #### Cluster-specific Features
 
 - Improve the meta store: any meta store changes are done via a compare and swap
-- Add support for [incremental backups](/enterprise/v1.2/guides/backup-and-restore/)
+- Add support for [incremental backups](/enterprise_influxdb/v1.2/guides/backup-and-restore/)
 - Automatically remove any deleted shard groups from the data store
-- Uncomment the section headers in the default [configuration file](/enterprise/v1.2/administration/configuration/)
+- Uncomment the section headers in the default [configuration file](/enterprise_influxdb/v1.2/administration/configuration/)
 - Add InfluxQL support for [subqueries](/influxdb/v1.2/query_language/data_exploration/#subqueries)
 
 #### Cluster-specific Bugfixes
 
 - Update dependencies with Godeps
 - Fix a data race in meta client
-- Ensure that the system removes the relevant [user permissions and roles](/enterprise/v1.2/features/users/) when a database is dropped
-- Fix a couple typos in demo [configuration file](/enterprise/v1.2/administration/configuration/)
+- Ensure that the system removes the relevant [user permissions and roles](/enterprise_influxdb/v1.2/features/users/) when a database is dropped
+- Fix a couple typos in demo [configuration file](/enterprise_influxdb/v1.2/administration/configuration/)
 - Make optional the version protobuf field for the meta store
 - Remove the override of GOMAXPROCS
 - Remove an unused configuration option (`dir`) from the backend
@@ -217,8 +217,8 @@ Switches to journald logging for on systemd systems. Logs are no longer sent to 
 
 - Return an error if getting latest snapshot takes longer than 30 seconds
 - Remove any expired shards from the `/show-shards` output
-- Respect the [`pprof-enabled` configuration setting](/enterprise/v1.2/administration/configuration/#pprof-enabled-true) and enable it by default on meta nodes
-- Respect the [`pprof-enabled` configuration setting](/enterprise/v1.2/administration/configuration/#pprof-enabled-true-1) on data nodes
+- Respect the [`pprof-enabled` configuration setting](/enterprise_influxdb/v1.2/administration/configuration/#pprof-enabled-true) and enable it by default on meta nodes
+- Respect the [`pprof-enabled` configuration setting](/enterprise_influxdb/v1.2/administration/configuration/#pprof-enabled-true-1) on data nodes
 - Use the data reference instead of `Clone()` during read-only operations for performance purposes
 - Prevent the system from double-collecting cluster statistics
 - Ensure that the meta API redirects to the cluster leader when it gets the `ErrNotLeader` error
@@ -232,7 +232,7 @@ Switches to journald logging for on systemd systems. Logs are no longer sent to 
 
 #### Cluster-specific Bugfixes
 
-- Respect the [Hinted Handoff settings](/enterprise/v1.2/administration/configuration/#hinted-handoff) in the configuration file
+- Respect the [Hinted Handoff settings](/enterprise_influxdb/v1.2/administration/configuration/#hinted-handoff) in the configuration file
 - Fix expanding regular expressions when all shards do not exist on node that's handling the request
 
 ## v1.0.3 [2016-10-07]
@@ -334,7 +334,7 @@ Backup and restore has been updated to fix issues and refine existing capabiliti
 
 ### Bug Fixes
 
-* Set a sane default (`24h`) for the [`session-lifetime` configuration setting](/enterprise/v1.2/administration/configuration/#session-lifetime-24h)
+* Set a sane default (`24h`) for the [`session-lifetime` configuration setting](/enterprise_influxdb/v1.2/administration/configuration/#session-lifetime-24h)
 * Fix node and shard reporting inaccurate information
 * Fix the retention policy page dropdown when selecting databases
 
@@ -344,7 +344,7 @@ As of version 1.2.1, the `Rebalance` button on the Web Consoles `Tasks` page
 is deprecated and no longer available.
 We based this decision on customer and support feedback regarding the feature.
 For the time being, you will need to rebalance clusters manually.
-The [Cluster Rebalance](/enterprise/v1.2/guides/rebalance/) guide offers
+The [Cluster Rebalance](/enterprise_influxdb/v1.2/guides/rebalance/) guide offers
 detailed instructions for performing a manual rebalance of your InfluxEnterprise cluster.
 Please contact support with any questions or concerns you may have about this
 development.
@@ -355,7 +355,7 @@ development.
 
 ### Bug Fixes
 
-* Fix the [`autologout` configuration setting](/enterprise/v1.2/administration/configuration/#autologout-false)
+* Fix the [`autologout` configuration setting](/enterprise_influxdb/v1.2/administration/configuration/#autologout-false)
 * Fix the series and measurement counts on the `Database Manager` page
 
 ## v1.1.1 [2016-12-06]
@@ -366,13 +366,13 @@ users currently running on the Mac OS X platform, powered by the Darwin operatin
 
 ### Features
 
-- Add the [`autologout` configuration setting](/enterprise/v1.2/administration/configuration/#autologout-false) to enable a forced logout on browser close
+- Add the [`autologout` configuration setting](/enterprise_influxdb/v1.2/administration/configuration/#autologout-false) to enable a forced logout on browser close
 
 ## v1.1.0 [2016-11-14]
 
 ### Features
 
-- Add the [`session-lifetime` configuration setting](/enterprise/v1.2/administration/configuration/#session-lifetime-24h) to configure the time after which users are automatically logged out
+- Add the [`session-lifetime` configuration setting](/enterprise_influxdb/v1.2/administration/configuration/#session-lifetime-24h) to configure the time after which users are automatically logged out
 
 ## v1.0.3 [2016-10-07]
 
@@ -399,5 +399,5 @@ This release is for maintaining version parity with clustering.
 
 ### Features
 
-* **Rebalancing:** Rebalancing now ensures that all existing data adhere to the relevant [replication factor](/influxdb/v1.2/concepts/glossary/#replication-factor). See [Web Console Features](/enterprise/v1.2/features/web-console-features/#cluster-rebalancing) for more information.
-* **User updates:** In versions 0.7.2 and below, users were loosely synced between the cluster and web console. In version 1.0, users have web-console-specific functions and are given cluster-specific permissions by being associated with a separate cluster account. The document [InfluxEnterprise Users](/enterprise/v1.2/features/users/) describes the new user arrangement in more detail. Please note that this change requires additional steps if you are [upgrading](/enterprise/v1.2/administration/upgrading/) from a previous version of the web console.
+* **Rebalancing:** Rebalancing now ensures that all existing data adhere to the relevant [replication factor](/influxdb/v1.2/concepts/glossary/#replication-factor). See [Web Console Features](/enterprise_influxdb/v1.2/features/web-console-features/#cluster-rebalancing) for more information.
+* **User updates:** In versions 0.7.2 and below, users were loosely synced between the cluster and web console. In version 1.0, users have web-console-specific functions and are given cluster-specific permissions by being associated with a separate cluster account. The document [InfluxEnterprise Users](/enterprise_influxdb/v1.2/features/users/) describes the new user arrangement in more detail. Please note that this change requires additional steps if you are [upgrading](/enterprise_influxdb/v1.2/administration/upgrading/) from a previous version of the web console.

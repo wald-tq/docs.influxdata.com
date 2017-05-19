@@ -1,10 +1,10 @@
 ---
 title: Administration
 menu:
-  enterprise_1_0:
+  enterprise_influxdb_1_0:
     weight: 50
 ---
 
-## [Logs](/enterprise/v1.0/administration/logs/)
+## [Logs](/enterprise_influxdb/v1.0/administration/logs/)
 
-## [Upgrading from Previous Versions](/enterprise/v1.0/administration/upgrading/)
+## [Upgrading from Previous Versions](/enterprise_influxdb/v1.0/administration/upgrading/)

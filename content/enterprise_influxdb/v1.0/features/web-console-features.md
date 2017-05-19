@@ -1,7 +1,7 @@
 ---
 title: Web Console Features
 menu:
-  enterprise_1_0:
+  enterprise_influxdb_1_0:
     weight: 30
     parent: Features
 ---
@@ -22,7 +22,7 @@ data nodes in the InfluxEnterprise Cluster.
 The `Rebalance` button is available on the `Tasks` page.
 
 Performing a rebalance is useful if you've recently adjusted a retention policy's
-[replication factor](/enterprise/v1.0/concepts/glossary/#replication-factor) or if you've added a data node to a cluster.
+[replication factor](/enterprise_influxdb/v1.0/concepts/glossary/#replication-factor) or if you've added a data node to a cluster.
 Rebalancing a cluster:
 
 * Allocates existing

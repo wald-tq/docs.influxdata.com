@@ -1,7 +1,7 @@
 ---
 title: OSS to Cluster Migration
 menu:
-  enterprise_1_1:
+  enterprise_influxdb_1_1:
     weight: 10
     parent: Guides
 ---
@@ -191,7 +191,7 @@ influxd-ctl show
 
 ### 2. Rebalance the cluster
 
-Increase the [replication factor](/enterprise/v1.1/concepts/glossary/#replication-factor) on all existing retention polices to the number of data nodes in your cluster.
+Increase the [replication factor](/enterprise_influxdb/v1.1/concepts/glossary/#replication-factor) on all existing retention polices to the number of data nodes in your cluster.
 You can do this with [ALTER RETENTION POLICY](https://docs.influxdata.com/influxdb/v1.1/query_language/database_management/#modify-retention-policies-with-alter-retention-policy).
 
-Next, [rebalance](/enterprise/v1.1/features/web-console-features/#cluster-rebalancing) your cluster using the `Rebalance` button on the `Tasks` page.
+Next, [rebalance](/enterprise_influxdb/v1.1/features/web-console-features/#cluster-rebalancing) your cluster using the `Rebalance` button on the `Tasks` page.

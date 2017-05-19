@@ -1,11 +1,11 @@
 ---
 title: Installation Guidelines (⏰ Please Read!)
 aliases:
-  /enterprise/v1.2/introduction/meta_node_installation/
-  /enterprise/v1.2/introduction/data_node_installation/
-  /enterprise/v1.2/introduction/web_console_installation/
+  /enterprise_influxdb/v1.2/introduction/meta_node_installation/
+  /enterprise_influxdb/v1.2/introduction/data_node_installation/
+  /enterprise_influxdb/v1.2/introduction/web_console_installation/
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 20
     parent: Introduction
 ---
@@ -16,14 +16,14 @@ Please review the sections below before you begin working with InfluxEnterprise.
 
 There are two ways to install InfluxEnterprise.
 
-The first option is the [QuickStart Installation](/enterprise/v1.2/quickstart_installation/) process.
+The first option is the [QuickStart Installation](/enterprise_influxdb/v1.2/quickstart_installation/) process.
 We recommend the QuickStart Installation process for users looking to quickly
 get up and running with InfluxEnterprise and for users who are looking to
 evaluate the product.
 The QuickStart Installation process **is not** designed for use
 in a production environment.
 
-The second option is the [Production Installation](/enterprise/v1.2/production_installation/) process.
+The second option is the [Production Installation](/enterprise_influxdb/v1.2/production_installation/) process.
 We recommend the Production Installation process for users looking to deploy
 InfluxEnterprise in a production environment.
 
@@ -33,7 +33,7 @@ process before using the product in a production environment.
 
 ## Requirements for InfluxEnterprise Clusters
 
-Please review the [Clustering Guide](http://docs.influxdata.com/enterprise/v1.2/concepts/clustering/)
+Please review the [Clustering Guide](http://docs.influxdata.com/enterprise_influxdb/v1.2/concepts/clustering/)
 for an overview of the architecture and concepts in an InfluxEnterprise Cluster
 and the
 [Hardware Sizing Guide](http://docs.influxdata.com/influxdb/v1.0/guides/hardware_sizing/#general-hardware-guidelines-for-a-cluster)

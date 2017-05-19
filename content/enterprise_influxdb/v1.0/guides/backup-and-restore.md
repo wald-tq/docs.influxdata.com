@@ -1,7 +1,7 @@
 ---
 title: Backup and Restore
 menu:
-  enterprise_1_0:
+  enterprise_influxdb_1_0:
     weight: 0
     parent: Guides
 ---

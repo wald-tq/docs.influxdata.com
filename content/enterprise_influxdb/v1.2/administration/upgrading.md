@@ -1,7 +1,7 @@
 ---
 title: Upgrading from Previous Versions
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 0
     parent: Administration
 ---
@@ -79,10 +79,10 @@ They were, however, missing from the sample configuration file (`/etc/influxdb/i
 
 In the `[meta]` section of the configuration file (`/etc/influxdb/influxdb-meta.conf`), add the following options:
 
-* [auth-enabled = false](/enterprise/v1.2/administration/configuration/#auth-enabled-false)
-* [https-private-key = ""](/enterprise/v1.2/administration/configuration/#https-private-key)
-* [https-insecure-tls = false](/enterprise/v1.2/administration/configuration/#https-insecure-tls-false)
-* [consensus-timeout = "30s"](/enterprise/v1.2/administration/configuration/#consensus-timeout-30s)
+* [auth-enabled = false](/enterprise_influxdb/v1.2/administration/configuration/#auth-enabled-false)
+* [https-private-key = ""](/enterprise_influxdb/v1.2/administration/configuration/#https-private-key)
+* [https-insecure-tls = false](/enterprise_influxdb/v1.2/administration/configuration/#https-insecure-tls-false)
+* [consensus-timeout = "30s"](/enterprise_influxdb/v1.2/administration/configuration/#consensus-timeout-30s)
 
 Those configuration options are set to their default settings.
 Follow the links for more information about those options.
@@ -99,14 +99,14 @@ The only actual configuration changes between version 1.1.1 and version 1.2.5 ar
 Uncomment all commented section headers: `[cluster]`, `[retention]`, `[shard-precreation]`, `[admin]`, `[monitor]`, `[subscriber]`, `[http]`, `[[graphite]]`, `[[collectd]]`, `[[opentsdb]]`, `[[udp]]`, and `[[continuous_queries]]`.
 That change ensures that any future configuration changes to those sections will take effect upon a restart with no additional steps.
 
-Under the `hostname` option at the top of the configuration file (`/etc/influxdb/influxdb.conf`), add [gossip-frequency = "3s"](/enterprise/v1.2/administration/configuration/#gossip-frequency-3s).
+Under the `hostname` option at the top of the configuration file (`/etc/influxdb/influxdb.conf`), add [gossip-frequency = "3s"](/enterprise_influxdb/v1.2/administration/configuration/#gossip-frequency-3s).
 
 In the `[meta]` section, add:
 
-* [meta-auth-enabled = false](/enterprise/v1.2/administration/configuration/#meta-auth-enabled-false)
-* [meta-internal-shared-secret = ""](/enterprise/v1.2/administration/configuration/#meta-internal-shared-secret)
+* [meta-auth-enabled = false](/enterprise_influxdb/v1.2/administration/configuration/#meta-auth-enabled-false)
+* [meta-internal-shared-secret = ""](/enterprise_influxdb/v1.2/administration/configuration/#meta-internal-shared-secret)
 
-In the `[monitor]` section, add [remote-collect-interval = "10s"](/enterprise/v1.2/administration/configuration/#remote-collect-interval-10s).
+In the `[monitor]` section, add [remote-collect-interval = "10s"](/enterprise_influxdb/v1.2/administration/configuration/#remote-collect-interval-10s).
 
 In the `[[collectd]]` section, add:
 
@@ -115,11 +115,11 @@ In the `[[collectd]]` section, add:
 
 In the `[http] section`, change:
 
-* `max-row-limit = 10000` to [max-row-limit = 0](/enterprise/v1.2/administration/configuration/#max-row-limit-0)
+* `max-row-limit = 10000` to [max-row-limit = 0](/enterprise_influxdb/v1.2/administration/configuration/#max-row-limit-0)
 
 In the `[[udp]]` section, add [precision = ""](/influxdb/v1.2/administration/config/#precision).
 
-In the `[cluster]` section, **remove** [shard-writer-timeout = "5s"](/enterprise/v1.2/administration/configuration/#shard-writer-timeout-5s).
+In the `[cluster]` section, **remove** [shard-writer-timeout = "5s"](/enterprise_influxdb/v1.2/administration/configuration/#shard-writer-timeout-5s).
 
 The added configuration options are set to their default settings.
 Follow the links for more information about those options.
@@ -149,7 +149,7 @@ sudo systemctl restart influxdb
 ### Step 6: Confirm the upgrade
 
 Check your nodes' version numbers using the `influxd-ctl show` command.
-The [`influxd-ctl` tool](/enterprise/v1.2/features/cluster-commands/) is available on all meta nodes.
+The [`influxd-ctl` tool](/enterprise_influxdb/v1.2/features/cluster-commands/) is available on all meta nodes.
 
 ```
 ~# influxd-ctl show

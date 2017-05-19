@@ -1,7 +1,7 @@
 ---
 title: Upgrading from Previous Versions
 menu:
-  enterprise_1_0:
+  enterprise_influxdb_1_0:
     weight: 0
     parent: Administration
 ---
@@ -11,11 +11,11 @@ Clustering version 0.7.4 and InfluxEnterprise Web Console version 0.7.1
 to InfluxEnterprise 1.0.
 
 Please note that the upgrade process requires you to delete existing users
-from the web console due to [significant changes](/enterprise/v1.0/about-the-project/release-notes-changelog/#user-updates)
+from the web console due to [significant changes](/enterprise_influxdb/v1.0/about-the-project/release-notes-changelog/#user-updates)
 to how users function in InfluxEnterprise.
 Once you've completed the upgrade process, any users created prior to version 1.0 will be
-[cluster accounts](/enterprise/v1.0/features/users/#cluster-user-information).
-Please see [InfluxEnterprise Users](/enterprise/v1.0/features/users/) for
+[cluster accounts](/enterprise_influxdb/v1.0/features/users/#cluster-user-information).
+Please see [InfluxEnterprise Users](/enterprise_influxdb/v1.0/features/users/) for
 more information on how InfluxEnterprise organizes users in version 1.0.
 
 > **Note:** Before you start, please review the section at the
@@ -122,7 +122,7 @@ sudo systemctl start influx-enterprise
 Now that you've upgraded to version 1.0, visit `http://<your_web_console_server's_IP_address>:3000`
 to complete the new signup flow.
 
-The [Getting Started](/enterprise/v1.0/introduction/getting_started/) guide offers
+The [Getting Started](/enterprise_influxdb/v1.0/introduction/getting_started/) guide offers
 detailed instructions for how to complete the signup process.
 Don't worry about any existing cluster users for now - we'll take care of
 them in the next step.
@@ -178,7 +178,7 @@ In the `Account Details` section, click the checkbox next to `Admin` and click
 
 
 You've completed the upgrade process for version 1.0.
-Next, check out the [release notes](/enterprise/v1.0/about-the-project/release-notes-changelog/) to
+Next, check out the [release notes](/enterprise_influxdb/v1.0/about-the-project/release-notes-changelog/) to
 see what's new!
 
 ## Configuration settings

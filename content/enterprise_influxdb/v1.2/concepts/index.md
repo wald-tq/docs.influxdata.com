@@ -1,9 +1,9 @@
 ---
 title: Concepts
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 20
 ---
 
-## [Clustering](/enterprise/v1.2/concepts/clustering)
-## [Glossary](/enterprise/v1.2/concepts/glossary/)
+## [Clustering](/enterprise_influxdb/v1.2/concepts/clustering)
+## [Glossary](/enterprise_influxdb/v1.2/concepts/glossary/)

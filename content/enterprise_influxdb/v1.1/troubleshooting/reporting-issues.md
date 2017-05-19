@@ -1,7 +1,7 @@
 ---
 title: Reporting Issues
 menu:
-  enterprise_1_1:
+  enterprise_influxdb_1_1:
     weight: 10
     parent: Troubleshooting
 ---

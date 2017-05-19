@@ -1,7 +1,7 @@
 ---
 title: Step 2 - Web Console Installation
 menu:
-  enterprise_1_2:
+  enterprise_influxdb_1_2:
     weight: 20
     parent: quickstart_installation
     identifier: web_quickstart
@@ -10,7 +10,7 @@ menu:
 The next steps will get you up and running with the InfluxEnterprise's
 management UI for working with clusters.
 Please visit
-[Cluster Installation](/enterprise/v1.2/quickstart_installation/cluster_installation/)
+[Cluster Installation](/enterprise_influxdb/v1.2/quickstart_installation/cluster_installation/)
 if you have yet to set up your InfluxEnterprise Cluster.
 
 # Web Console Setup
@@ -88,7 +88,7 @@ url = "sqlite3:///var/lib/influx-enterprise/enterprise.db"
 to new web console users.
 If you're working on Ubuntu 14.04 and are looking for an SMTP server to use for
 development purposes, see the
-[SMTP Server Setup](/enterprise/v1.2/guides/smtp-server/) guide for how to get up
+[SMTP Server Setup](/enterprise_influxdb/v1.2/guides/smtp-server/) guide for how to get up
 and running with [MailCatcher](https://mailcatcher.me/).
 
 ### 2. Migrate the Configuration File
@@ -143,7 +143,7 @@ You should see output similar to:
 You're all set!
 Visit `http://<your_web_console_server's_IP_address>:3000` to access your
 InfluxEnterprise web console, and check out the
-[Getting Started](/enterprise/v1.2/introduction/getting_started/) document.
+[Getting Started](/enterprise_influxdb/v1.2/introduction/getting_started/) document.
 
 > ## Install the InfluxEnterprise Web Console with PostgreSQL
 >

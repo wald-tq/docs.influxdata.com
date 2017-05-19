@@ -1,7 +1,7 @@
 ---
 title: Cluster Features
 menu:
-  enterprise_1_0:
+  enterprise_influxdb_1_0:
     weight: 20
     parent: Features
 ---
@@ -40,7 +40,7 @@ The `control.Client` provides a Go client to access this functionality as well.
 
 Importing a OSS single server as the first data node is supported.
 
-See [OSS to Cluster Migration](/enterprise/v1.0/guides/migration/) for
+See [OSS to Cluster Migration](/enterprise_influxdb/v1.0/guides/migration/) for
 step-by-step instructions.
 
 ## Query Routing
@@ -52,7 +52,7 @@ If there is a replica on another node, it will retry on that node.
 
 InfluxEnterprise clusters support backup and restore functionality starting with
 version 0.7.1.
-See [Backup and Restore](/enterprise/v1.0/guides/backup-and-restore/) for
+See [Backup and Restore](/enterprise_influxdb/v1.0/guides/backup-and-restore/) for
 more information.
 
 ## Features Under Development

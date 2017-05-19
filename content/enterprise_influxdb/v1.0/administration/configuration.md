@@ -1,7 +1,7 @@
 ---
 title: Configuration
 menu:
-  enterprise_1_0:
+  enterprise_influxdb_1_0:
     weight: 20
     parent: Administration
 ---
@@ -157,7 +157,7 @@ It will be removed in future versions.
 
 ### hostname = ""
 
-The hostname of the [meta node](/enterprise/v1.0/concepts/glossary/#meta-node).
+The hostname of the [meta node](/enterprise_influxdb/v1.0/concepts/glossary/#meta-node).
 This must be resolvable and reachable by all other members of the cluster.
 
 ## [enterprise]
@@ -218,7 +218,7 @@ Environment variable: `INFLUXDB_META_BIND_ADDRESS`
 
 ###  http-bind-address = ":8091"
 
-The port used by the [`influxd-ctl` tool](/enterprise/v1.0/features/cluster-commands/) and by data nodes to access the
+The port used by the [`influxd-ctl` tool](/enterprise_influxdb/v1.0/features/cluster-commands/) and by data nodes to access the
 meta APIs.
 For simplicity we recommend using the same port on all meta nodes, but this
 is not necessary.
@@ -366,7 +366,7 @@ See the [OSS documentation](/influxdb/v1.0/administration/config/#bind-address-8
 
 ### hostname = "localhost"
 
-The hostname of the [data node](/enterprise/v1.0/concepts/glossary/#data-node).
+The hostname of the [data node](/enterprise_influxdb/v1.0/concepts/glossary/#data-node).
 
 ## [enterprise]
 
@@ -527,7 +527,7 @@ the system returns a timeout error.
 
 For clusters with contention, increasing `shard-writer-timeout` may reduce
 points sent via the
-[hinted handoff](/enterprise/v1.0/concepts/clustering/#hinted-handoff), but
+[hinted handoff](/enterprise_influxdb/v1.0/concepts/clustering/#hinted-handoff), but
 increasing this setting also raises the time it takes for a receiving node to
 respond to a write client.
 
@@ -929,7 +929,7 @@ Environment variable: `LICENSE_FILE`
 
 Allows the web console to authenticate users with the cluster.
 This setting is required and must match the
-[`shared-secret` setting](/enterprise/v1.0/administration/configuration/#shared-secret)
+[`shared-secret` setting](/enterprise_influxdb/v1.0/administration/configuration/#shared-secret)
 in the data node configuration files.
 
 Environment variable: `SHARED_SECRET`
@@ -970,7 +970,7 @@ The web console currently only supports Postgres >= 9.3 or SQLite3.
 The location of the PostgreSQL database for the web console.
 By default, the web console uses SQLite for installations.
 See
-[Step 3 - Web Console Installation](/enterprise/v1.0/introduction/web_console_installation/#install-the-influxenterprise-web-console-with-postgresql) for instructions on using PostgreSQL.
+[Step 3 - Web Console Installation](/enterprise_influxdb/v1.0/introduction/web_console_installation/#install-the-influxenterprise-web-console-with-postgresql) for instructions on using PostgreSQL.
 
 Environment variable: `DATABASE_URL`
 
