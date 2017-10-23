@@ -12,6 +12,27 @@ menu:
 
 The [WhereNode](/kapacitor/v1.3/nodes/where_node/) filters the data stream by a given expression.
 
+**Standard Constructor**
+
+| Signature | Description |
+|:----------|:------------|
+| **[where](#example)( predicate `lambda`)** | The _predicate_ is a boolean lambda expression that filters data like the `WHERE` clause in InfluxQL. |
+
+**Property Methods**
+
+The WhereNode has no additional properties.
+
+**Standard Chaining Methods:**
+
+[Alert](/kapacitor/v1.3/nodes/alert_node/), [Combine](/kapacitor/v1.3/nodes/combine_node/), [Default](/kapacitor/v1.3/nodes/default_node/),  [Delete](/kapacitor/v1.3/nodes/delete_node/), [Derivative](/kapacitor/v1.3/nodes/derivative_node/), [Eval](/kapacitor/v1.3/nodes/eval_node/), [Flatten](/kapacitor/v1.3/nodes/flatten_node/), [GroupBy](/kapacitor/v1.3/nodes/group_by_node/), [HttpOut](/kapacitor/v1.3/nodes/http_out_node/), [HttpPost](/kapacitor/v1.3/nodes/http_post_node/), [InfluxDBOut](/kapacitor/v1.3/nodes/influx_d_b_out_node/), [Join](/kapacitor/v1.3/nodes/join_node/), [K8sAutoscale](/kapacitor/v1.3/nodes/k8s_autoscale_node/), [KapacitorLoopback](/kapacitor/v1.3/nodes/kapacitor_loopback_node/),  [Log](/kapacitor/v1.3/nodes/log_node/), [Sample](/kapacitor/v1.3/nodes/sample_node/), [Shift](/kapacitor/v1.3/nodes/shift_node/), [StateCount](/kapacitor/v1.3/nodes/state_count_node/), [StateDuration](/kapacitor/v1.3/nodes/state_duration_node/), [Stats](/kapacitor/v1.3/nodes/stats_node/), [Union](/kapacitor/v1.3/nodes/union_node/), [Where](/kapacitor/v1.3/nodes/where_node/), [Window](/kapacitor/v1.3/nodes/window_node/)
+
+**Alias Chaining Methods:**
+
+ [Bottom](/kapacitor/v1.3/nodes/default_node/#bottom),  [Count](/kapacitor/v1.3/nodes/default_node/#count), [CumulativeSum](/kapacitor/v1.3/nodes/default_node/#cumulativesum), [Deadman](/kapacitor/v1.3/nodes/default_node/#deadman), [Difference](/kapacitor/v1.3/nodes/default_node/#difference), [Distinct](/kapacitor/v1.3/nodes/default_node/#distinct), , [Elapsed](/kapacitor/v1.3/nodes/default_node/#elapsed), [First](/kapacitor/v1.3/nodes/default_node/#first), [HoltWinters](/kapacitor/v1.3/nodes/default_node/#holtwinters), [HoltWintersWithFit](/kapacitor/v1.3/nodes/default_node/#holtwinterswithfit), ,  [Last](/kapacitor/v1.3/nodes/default_node/#last), [Max](/kapacitor/v1.3/nodes/default_node/#max), [Mean](/kapacitor/v1.3/nodes/default_node/#mean), [Median](/kapacitor/v1.3/nodes/default_node/#median), [Min](/kapacitor/v1.3/nodes/default_node/#min), [Mode](/kapacitor/v1.3/nodes/default_node/#mode), [MovingAverage](/kapacitor/v1.3/nodes/default_node/#movingaverage), [Percentile](/kapacitor/v1.3/nodes/default_node/#percentile),  [Spread](/kapacitor/v1.3/nodes/default_node/#spread),  [Stddev](/kapacitor/v1.3/nodes/default_node/#stddev), [Sum](/kapacitor/v1.3/nodes/default_node/#sum), [Top](/kapacitor/v1.3/nodes/default_node/#top)
+
+<a id="example"></a>
+<hr/>
+
 Example:
 
 
@@ -29,7 +50,7 @@ Example:
 ```
 
 
-
+<!--
 Index
 -----
 
@@ -90,8 +111,14 @@ Chaining Methods
 Chaining methods create a new node in the pipeline as a child of the calling node.
 They do not modify the calling node.
 Chaining methods are marked using the `|` operator.
+-->
 
+Alias Chaining Methods
+----------------
 
+Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_q_l_node/) or [Alert](/kapacitor/v1.3/nodes/alert_node/) node by self-descriptively wrapping some or all of their functionality.  
+
+<!--
 ### Alert
 
 Create an alert node, which can trigger alerts.
@@ -102,7 +129,7 @@ node|alert()
 ```
 
 Returns: [AlertNode](/kapacitor/v1.3/nodes/alert_node/)
-
+-->
 
 ### Bottom
 
@@ -115,7 +142,7 @@ node|bottom(num int64, field string, fieldsAndTags ...string)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-
+<!--
 ### Combine
 
 Combine this node with itself. The data are combined on timestamp.
@@ -126,7 +153,7 @@ node|combine(expressions ...ast.LambdaNode)
 ```
 
 Returns: [CombineNode](/kapacitor/v1.3/nodes/combine_node/)
-
+-->
 
 ### Count
 
@@ -237,7 +264,7 @@ node|deadman(threshold float64, interval time.Duration, expr ...ast.LambdaNode)
 
 Returns: [AlertNode](/kapacitor/v1.3/nodes/alert_node/)
 
-
+<!--
 ### Default
 
 Create a node that can set defaults for missing tags or fields.
@@ -272,7 +299,7 @@ node|derivative(field string)
 ```
 
 Returns: [DerivativeNode](/kapacitor/v1.3/nodes/derivative_node/)
-
+-->
 
 ### Difference
 
@@ -309,7 +336,7 @@ node|elapsed(field string, unit time.Duration)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-
+<!--
 ### Eval
 
 Create an eval node that will evaluate the given transformation function to each data point.
@@ -322,7 +349,7 @@ node|eval(expressions ...ast.LambdaNode)
 ```
 
 Returns: [EvalNode](/kapacitor/v1.3/nodes/eval_node/)
-
+-->
 
 ### First
 
@@ -335,7 +362,7 @@ node|first(field string)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-
+<!--
 ### Flatten
 
 Flatten points with similar times into a single point.
@@ -367,7 +394,7 @@ node|groupBy(tag ...interface{})
 ```
 
 Returns: [GroupByNode](/kapacitor/v1.3/nodes/group_by_node/)
-
+-->
 
 ### HoltWinters
 
@@ -403,7 +430,7 @@ node|holtWintersWithFit(field string, h int64, m int64)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-
+<!--
 ### HttpOut
 
 Create an HTTP output node that caches the most recent data it has received.
@@ -480,7 +507,7 @@ node|kapacitorLoopback()
 ```
 
 Returns: [KapacitorLoopbackNode](/kapacitor/v1.3/nodes/kapacitor_loopback_node/)
-
+-->
 
 ### Last
 
@@ -493,7 +520,7 @@ node|last(field string)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-
+<!--
 ### Log
 
 Create a node that logs all data it receives.
@@ -504,7 +531,7 @@ node|log()
 ```
 
 Returns: [LogNode](/kapacitor/v1.3/nodes/log_node/)
-
+-->
 
 ### Max
 
@@ -591,7 +618,7 @@ node|percentile(field string, percentile float64)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-
+<!--
 ### Sample
 
 Create a new node that samples the incoming points or batches.
@@ -617,7 +644,7 @@ node|shift(shift time.Duration)
 
 Returns: [ShiftNode](/kapacitor/v1.3/nodes/shift_node/)
 
-
+-->
 ### Spread
 
 Compute the difference between `min` and `max` points.
@@ -629,7 +656,7 @@ node|spread(field string)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-
+<!--
 ### StateCount
 
 Create a node that tracks number of consecutive points in a given state.
@@ -666,7 +693,7 @@ node|stats(interval time.Duration)
 ```
 
 Returns: [StatsNode](/kapacitor/v1.3/nodes/stats_node/)
-
+-->
 
 ### Stddev
 
@@ -703,7 +730,7 @@ node|top(num int64, field string, fieldsAndTags ...string)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-
+<!--
 ### Union
 
 Perform the union of this node and all other given nodes.
@@ -740,3 +767,4 @@ node|window()
 ```
 
 Returns: [WindowNode](/kapacitor/v1.3/nodes/window_node/)
+-->

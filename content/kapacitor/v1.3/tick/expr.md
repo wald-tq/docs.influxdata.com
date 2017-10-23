@@ -10,7 +10,12 @@ menu:
 
 # Overview
 
-TICKscript uses lambda expressions  to define transformations on data points as well as define boolean conditions that act as filters. Lambda expressions wrap mathematical operations, boolean operations, internal function calls or a combination of all three. TICKscript tries to be similar to InfluxQL in that most expressions that you would use in an InfluxQL `WHERE` clause will work as expressions in TICKscript, but with its own syntax:
+TICKscript uses lambda expressions  to define transformations on data points as
+well as define boolean conditions that act as filters.  Lambda expressions wrap
+mathematical operations, boolean operations, internal function calls or a
+combination of all three. TICKscript tries to be similar to InfluxQL in that
+most expressions that you would use in an InfluxQL `WHERE` clause will work as
+expressions in TICKscript, but with its own syntax:
 
 * All field or tag identifiers must be double quoted.
 * The comparison operator for equality is `==` not `=`.
@@ -21,13 +26,23 @@ All lambda expressions in TICKscript begin with the `lambda:` keyword.
 .where(lambda: "host" == 'server001.example.com')
 ```
 
-In some nodes the results of a lambda expression can be captured as a named result using the property `.as()`.  In this way they can be used in other nodes further down the pipeline.  
+In some nodes the results of a lambda expression can be captured as a named
+result using the property setter `.as()`.
+In this way they can be used in other nodes further down the pipeline.  
 
 <!--
 Stateful
 --------
 -->
-The internal functions of lambda expressions can be either stateless or stateful.  Stateful means that each time the function is evaluated an internal state can change and will persist until the next evaluation.  This may seem odd as part of an expression language but it has a powerful use case.  Within the language a function can be defined that is essentially an on-line/streaming algorithm and with each call the function state is updated. For example the built-in function `sigma` calculates a running mean and standard deviation and returns the number of standard deviations the current data point is away from the mean.
+The internal functions of lambda expressions can be either stateless or
+stateful.  Stateful means that each time the function is evaluated the internal
+state can change and will persist until the next evaluation.
+This may seem odd as part of an expression language but it has a powerful use
+case.  Within the language a function can be defined that is essentially an
+on-line/streaming algorithm and with each call the function state is updated.
+For example the built-in function `sigma` calculates a running mean and standard
+deviation and returns the number of standard deviations the current data point
+is away from the mean.
 
 **Example 1 &ndash; the sigma function**
 
@@ -35,12 +50,20 @@ The internal functions of lambda expressions can be either stateless or stateful
 sigma("value") > 3.0
 ```
 
-Each time that the expression is evaluated it updates the running statistics and then returns the deviation. This simple expression evaluates to `false` while the stream of data points it has received remains within `3.0` standard deviations of the running mean.  As soon as a value is processed that is more than `3.0` standard deviations from the mean it evaluates to `true`.  Such an expression can be used inside of a TICKscript to define powerful alerts.
+Each time that the expression is evaluated it updates the running statistics and
+then returns the deviation. The simple expression in Example 1 evaluates to
+ `false` while the stream of data points it has received remains within `3.0`
+ standard deviations of the running mean.  As soon as a value is processed that
+ is more than `3.0` standard deviations from the mean it evaluates to `true`.
+ Such an expression can be used inside of a TICKscript to define powerful
+ alerts, as illustrated in Example 2 below.
 
 **Example 2 &ndash; TICKscript with lambda expression**
 
 ```javascript
 stream
+    |from()
+    ...
     |alert()
         // use an expression to define when an alert should go critical.
         .crit(lambda: sigma("value") > 3.0)
@@ -49,15 +72,31 @@ stream
 **Note on inadvertent type casting**
 
 Beware that numerical values declared in the TICKscript follow the parsing rules
-for literals introduced in the [Syntax](/kapacitor/v1.3/tick/syntax/#literal-values) document.  They may not be of a suitable type for the function or operation in which they will be used. Numerical values that include a decimal will be interpreted as floats.  Numerical values without a decimal will be interpreted as integers.  When integers and floats are used within the same expression the integer values need to use the `float()` type conversion function if a float result is desired. Failure to observe this rule can yield unexpected results.  For example, when using a lambda expression to calculate percentages from fields of type integer, it might be assumed that a subset can be divided by the total to get a ratio. Such an operation will result in an integer value of 0.  Furthermore multiplication of the result of such an operation by the literal `100` (an integer) will also result in 0.  Casting the integer values to float and multiplication by the literal `100.0` (a float) will result in a valid
-percentage value.  Correctly written, such an operation should look like this: `eval(lambda: float("total_error_responses")/float("total_responses") * 100.0)`
+for literals introduced in the
+[Syntax](/kapacitor/v1.3/tick/syntax/#literal-values) document.  They may not be
+of a suitable type for the function or operation in which they will be used.
+Numerical values that include a decimal will be interpreted as floats.
+Numerical values without a decimal will be interpreted as integers.  When
+integers and floats are used within the same expression the integer values need
+to use the `float()` type conversion function if a float result is desired.
+Failure to observe this rule can yield unexpected results.  For example, when
+using a lambda expression to calculate a ratio between 0 and 1 of type float to
+use in generating a percentage and when the fields are of type integer, it might
+be assumed that a subset field can be divided by the total field to get the
+ratio.  Such an integer division by integer operation will result in an integer
+value of 0.  Furthermore multiplication of the result of such an operation by
+the literal `100` (an integer) will also result in 0.  Casting the integer
+values to float will result in a valid ratio in the range between 0 and 1, and
+then multiplication by the literal `100.0` (a float) will result in a valid
+percentage value.  Correctly written, such an operation should look like this:
+`eval(lambda: float("total_error_responses")/float("total_responses") * 100.0)`.
 
 If in the logs an error appears of the type `E! mismatched type to binary
 operator...`, check to ensure that the fields on both sides of the operator are
 of the same and the desired type.   
 
-To ensure that the type of a field value is correct, use the built-in type
-conversion functions (see [below](#type-conversion-functions)).   
+In short, to ensure that the type of a field value is correct, use the built-in
+type conversion functions (see [below](#type-conversion-functions)).   
 
 # Built-in Functions
 
@@ -65,7 +104,8 @@ conversion functions (see [below](#type-conversion-functions)).
 
 ##### Count
 
-Count takes no arguments but returns the number of times the expression has been evaluated.
+Count takes no arguments but returns the number of times the expression has been
+evaluated.
 
 ```javascript
 count() int64
@@ -73,8 +113,9 @@ count() int64
 
 ##### Sigma
 
-Computes the number of standard deviations a given value is away from the running mean.
-Each time the expression is evaluated the running mean and standard deviation are updated.
+Computes the number of standard deviations a given value is away from the
+running mean.  Each time the expression is evaluated the running mean and
+standard deviation are updated.
 
 ```javascript
 sigma(value float64) float64
@@ -82,7 +123,8 @@ sigma(value float64) float64
 
 ##### Spread
 
-Computes the running range of all values passed into it.  The range is the difference between the maximum and minimum values received.  
+Computes the running range of all values passed into it.  The range is the
+difference between the maximum and minimum values received.  
 
 ```javascript
 spread(value float64) float64
@@ -94,8 +136,9 @@ spread(value float64) float64
 
 ##### Bool
 
-Converts a string into a boolean via Golang's [strconv.ParseBool](https://golang.org/pkg/strconv/#ParseBool) function.
-Numeric types can also be converted to a bool where a 0 -> false and 1 -> true.
+Converts a string into a boolean via Golang's
+[strconv.ParseBool](https://golang.org/pkg/strconv/#ParseBool) function. Numeric
+types can also be converted to a bool where a 0 -> false and 1 -> true.
 
 ```javascript
 bool(value) bool
@@ -103,10 +146,11 @@ bool(value) bool
 
 ##### Int
 
-Converts a string or float64 into an int64 via Golang's [strconv.ParseInt](https://golang.org/pkg/strconv/#ParseInt) or simple `float64()` coercion.
-Strings are assumed to be decimal numbers.
-Durations are converted into an int64 with nanoseconds units.
-A boolean is converted to an int64 where false -> 0 and true -> 1.
+Converts a string or float64 into an int64 via Golang's
+[strconv.ParseInt](https://golang.org/pkg/strconv/#ParseInt) or simple
+`int64()` coercion.  Strings are assumed to be decimal numbers.  Durations are
+converted into an int64 with nanoseconds units.  A boolean is converted to an
+int64 where false -> 0 and true -> 1.
 
 ```javascript
 int(value) int64
@@ -114,8 +158,10 @@ int(value) int64
 
 ##### Float
 
-Converts a string or int64 into an float64 via Golang's [strconv.ParseFloat](https://golang.org/pkg/strconv/#ParseInt) or simple `int64()` coercion.
-A boolean is converted to an float64 where false -> 0.0 and true -> 1.0.
+Converts a string or int64 into an float64 via Golang's
+[strconv.ParseFloat](https://golang.org/pkg/strconv/#ParseInt) or simple
+`float64()` coercion.
+A boolean is converted to a float64 where false -> 0.0 and true -> 1.0.
 
 ```javascript
 float(value) float64
@@ -123,7 +169,8 @@ float(value) float64
 
 ##### String
 
-Converts a bool, int64 or float64 into an string via Golang's [strconv.Format*](https://golang.org/pkg/strconv/#FormatBool) functions.
+Converts a bool, int64 or float64 into an string via Golang's
+[strconv.Format*](https://golang.org/pkg/strconv/#FormatBool) functions.
 Durations are converted to a string representation of the duration.
 
 ```javascript
@@ -132,7 +179,7 @@ string(value) string
 
 ##### Duration
 
-Converts a int64 or float64 into an duration assuming nanoseconds units.
+Converts an int64 or a float64 into an duration assuming nanoseconds units.
 Strings are converted to duration of the form as duration literals in TICKscript.
 
 ```javascript
@@ -158,10 +205,11 @@ Each function returns an int64.
 Example usage:
 
 ```javascript
-lambda: hour("time") == 9
+lambda: hour("time") >= 9 AND hour("time") < 19
 ```
 
-The above expression evaluates to `true` if the hour of the day for the data point is 9 AM, using local time.
+The above expression evaluates to `true` if the hour of the day for the data
+point falls between 0900 hours and 1900 hours.
 
 
 #### Math functions
@@ -249,7 +297,7 @@ Each function is implemented via the equivalent Go function.
 
 ##### HumanBytes
 
-Converts a int64 or float64 with units bytes into a human readable string representing the number of bytes.
+Converts an int64 or a float64 with units bytes into a human readable string representing the number of bytes.
 
 ```javascript
 humanBytes(value) string

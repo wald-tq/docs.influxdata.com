@@ -10,13 +10,58 @@ menu:
     parent: nodes
 ---
 
-A [StreamNode](/kapacitor/v1.3/nodes/stream_node/) represents the source of data being 
-streamed to Kapacitor via any of its inputs. 
-The `stream` variable in stream tasks is an instance of 
-a [StreamNode.](/kapacitor/v1.3/nodes/stream_node/) 
-[StreamNode.From](/kapacitor/v1.3/nodes/stream_node/#from) is the method/property of this node. 
+A [StreamNode](/kapacitor/v1.3/nodes/stream_node/) represents the source of data
+being streamed to Kapacitor via any of its inputs.  The `stream` variable in
+stream tasks is an instance of a
+[StreamNode.](/kapacitor/v1.3/nodes/stream_node/).
+[StreamNode|From](/kapacitor/v1.3/nodes/from_node/) is the primary chaining
+method of this node.
+
+**Standard Constructor**
+
+| Signature |  Description |
+|:----------|:--|
+| **[stream](#example)** | Not a "chaining method" and so it takes no arguments.  It is simply declared as a type without parentheses  |
+
+**Property Methods**
+
+The StreamNode contains no properties that can be set.  
+
+**Standard Chaining Methods:**
+
+[From](/kapacitor/v1.3/nodes/from_node/), [Stats](/kapacitor/v1.3/nodes/stats_node/)
+
+Note that, if the pipeline is to be of much use, the `from` node is required to
+follow.
+
+**Alias Chaining Method:**
+
+[Deadman](/kapacitor/v1.3/nodes/stream_node/#deadman)
 
 
+<a id="example"></a>
+<hr/>
+
+Example:
+
+```javascript
+var data = stream
+  |from()
+    .database('telegraf')
+    .retentionPolicy('autogen')
+    .measurement('cpu')
+    .groupBy('host')
+    .where(lambda: "cpu" == 'cpu-total')
+    ...
+```
+**Available Statistics:**
+
+   * collected - number of points collected.
+   * emitted - number of points emitted.
+   * errors - number of errors thrown.
+
+
+<!--
 Index
 -----
 
@@ -28,24 +73,22 @@ Index
 -	[Deadman](/kapacitor/v1.3/nodes/stream_node/#deadman)
 -	[From](/kapacitor/v1.3/nodes/stream_node/#from)
 -	[Stats](/kapacitor/v1.3/nodes/stream_node/#stats)
+-->
+Alias Chaining Methods
+----------------------
 
-Chaining Methods
-----------------
-
-Chaining methods create a new node in the pipeline as a child of the calling node.
-They do not modify the calling node.
-Chaining methods are marked using the `|` operator.
+Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_q_l_node/) or [Alert](/kapacitor/v1.3/nodes/alert_node/) node by self-descriptively wrapping some or all of their functionality.  
 
 
 ### Deadman
 
-Helper function for creating an alert on low throughput, a.k.a. deadman&#39;s switch. 
+Helper function for creating an alert on low throughput, a.k.a. a deadman&#39;s switch.
 
-- Threshold -- trigger alert if throughput drops below threshold in points/interval. 
-- Interval -- how often to check the throughput. 
-- Expressions -- optional list of expressions to also evaluate. Useful for time of day alerting. 
+- Threshold -- trigger alert if throughput drops below threshold in points/interval.
+- Interval -- how often to check the throughput.
+- Expressions -- optional list of expressions to also evaluate. Useful for time of day alerting.
 
-Example: 
+Example:
 
 
 ```javascript
@@ -58,8 +101,8 @@ Example:
     data...
 ```
 
-The above is equivalent to this 
-Example: 
+The above is equivalent to this
+Example:
 
 
 ```javascript
@@ -80,10 +123,10 @@ Example:
     data...
 ```
 
-The `id` and `message` alert properties can be configured globally via the &#39;deadman&#39; configuration section. 
+The `id` and `message` alert properties can be configured globally via the &#39;deadman&#39; configuration section.
 
-Since the [AlertNode](/kapacitor/v1.3/nodes/alert_node/) is the last piece it can be further modified as usual. 
-Example: 
+Since the [AlertNode](/kapacitor/v1.3/nodes/alert_node/) is the last piece it can be further modified as usual.
+Example:
 
 
 ```javascript
@@ -98,8 +141,8 @@ Example:
     data...
 ```
 
-You can specify additional lambda expressions to further constrain when the deadman&#39;s switch is triggered. 
-Example: 
+You can specify additional lambda expressions to further constrain when the deadman&#39;s switch is triggered.
+Example:
 
 
 ```javascript
@@ -121,15 +164,15 @@ node|deadman(threshold float64, interval time.Duration, expr ...ast.LambdaNode)
 
 Returns: [AlertNode](/kapacitor/v1.3/nodes/alert_node/)
 
-
+<!--
 ### From
 
-Creates a new [FromNode](/kapacitor/v1.3/nodes/from_node/) that can be further 
-filtered using the Database, RetentionPolicy, Measurement and Where properties. 
-From can be called multiple times to create multiple 
-independent forks of the data stream. 
+Creates a new [FromNode](/kapacitor/v1.3/nodes/from_node/) that can be further
+filtered using the Database, RetentionPolicy, Measurement and Where properties.
+From can be called multiple times to create multiple
+independent forks of the data stream.
 
-Example: 
+Example:
 
 
 ```javascript
@@ -162,9 +205,9 @@ Returns: [FromNode](/kapacitor/v1.3/nodes/from_node/)
 
 ### Stats
 
-Create a new stream of data that contains the internal statistics of the node. 
-The interval represents how often to emit the statistics based on real time. 
-This means the interval time is independent of the times of the data points the source node is receiving. 
+Create a new stream of data that contains the internal statistics of the node.
+The interval represents how often to emit the statistics based on real time.
+This means the interval time is independent of the times of the data points the source node is receiving.
 
 
 ```javascript
@@ -172,4 +215,4 @@ node|stats(interval time.Duration)
 ```
 
 Returns: [StatsNode](/kapacitor/v1.3/nodes/stats_node/)
-
+-->

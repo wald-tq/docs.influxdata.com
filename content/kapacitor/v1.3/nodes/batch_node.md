@@ -10,13 +10,38 @@ menu:
     parent: nodes
 ---
 
-A node that handles creating several child QueryNodes. 
-Each call to `query` creates a child batch node that 
-can further be configured. See [QueryNode](/kapacitor/v1.3/nodes/query_node/) 
-The `batch` variable in batch tasks is an instance of 
-a [BatchNode.](/kapacitor/v1.3/nodes/batch_node/) 
+A node that handles creating several child QueryNodes. Each call to `query`
+creates a child batch node that can further be configured. See
+[QueryNode](/kapacitor/v1.3/nodes/query_node/). The `batch` variable in batch
+tasks is an instance of a [BatchNode.](/kapacitor/v1.3/nodes/batch_node/)
 
-Example: 
+**Standard Constructor**
+
+| Signature |  Description |
+|:----------|:--|
+| **[batch](#example)** | Not a "chaining method" and so it takes no arguments.  It is simply declared as a type without parentheses  |
+
+**Property Methods**
+
+The BatchNode contains no properties that can be set.  
+
+**Standard Chaining Methods:**
+
+[Query](/kapacitor/v1.3/nodes/query_node), [Stats](/kapacitor/v1.3/nodes/stats_node)
+
+Note that, if the pipeline is to be of much use, the `query` node is required to
+follow.
+
+
+**Alias Chaining Method:**
+
+[Deadman](/kapacitor/v1.3/nodes/batch_node/#deadman)
+
+
+<a id="example"></a>
+<hr/>
+
+Example:
 
 
 ```javascript
@@ -28,14 +53,14 @@ Example:
                       ...
 ```
 
-Available Statistics: 
+**Available Statistics:**
 
-* query_errors -- number of errors when querying 
-* batches_queried -- number of batches returned from queries 
-* points_queried -- total number of points in batches 
+* query_errors -- number of errors when querying
+* batches_queried -- number of batches returned from queries
+* points_queried -- total number of points in batches
 
 
-
+<!--
 Index
 -----
 
@@ -48,23 +73,22 @@ Index
 -	[Query](/kapacitor/v1.3/nodes/batch_node/#query)
 -	[Stats](/kapacitor/v1.3/nodes/batch_node/#stats)
 
-Chaining Methods
-----------------
+-->
 
-Chaining methods create a new node in the pipeline as a child of the calling node.
-They do not modify the calling node.
-Chaining methods are marked using the `|` operator.
+Alias Chaining Methods
+----------------------
 
+Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_q_l_node/) or [Alert](/kapacitor/v1.3/nodes/alert_node/) node by self-descriptively wrapping some or all of their functionality.  
 
 ### Deadman
 
-Helper function for creating an alert on low throughput, a.k.a. deadman&#39;s switch. 
+Helper function for creating an alert on low throughput, a.k.a. a deadman&#39;s switch.
 
-- Threshold -- trigger alert if throughput drops below threshold in points/interval. 
-- Interval -- how often to check the throughput. 
-- Expressions -- optional list of expressions to also evaluate. Useful for time of day alerting. 
+- Threshold -- trigger alert if throughput drops below threshold in points/interval.
+- Interval -- how often to check the throughput.
+- Expressions -- optional list of expressions to also evaluate. Useful for time of day alerting.
 
-Example: 
+Example:
 
 
 ```javascript
@@ -77,8 +101,8 @@ Example:
     data...
 ```
 
-The above is equivalent to this 
-Example: 
+The above is equivalent to this
+Example:
 
 
 ```javascript
@@ -99,10 +123,10 @@ Example:
     data...
 ```
 
-The `id` and `message` alert properties can be configured globally via the &#39;deadman&#39; configuration section. 
+The `id` and `message` alert properties can be configured globally via the &#39;deadman&#39; configuration section.
 
-Since the [AlertNode](/kapacitor/v1.3/nodes/alert_node/) is the last piece it can be further modified as usual. 
-Example: 
+Since the [AlertNode](/kapacitor/v1.3/nodes/alert_node/) is the last piece it can be further modified as usual.
+Example:
 
 
 ```javascript
@@ -117,8 +141,8 @@ Example:
     data...
 ```
 
-You can specify additional lambda expressions to further constrain when the deadman&#39;s switch is triggered. 
-Example: 
+You can specify additional lambda expressions to further constrain when the deadman&#39;s switch is triggered.
+Example:
 
 
 ```javascript
@@ -140,14 +164,14 @@ node|deadman(threshold float64, interval time.Duration, expr ...ast.LambdaNode)
 
 Returns: [AlertNode](/kapacitor/v1.3/nodes/alert_node/)
 
-
+<!--
 ### Query
 
-The query to execute. Must not contain a time condition 
-in the `WHERE` clause or contain a `GROUP BY` clause. 
-The time conditions are added dynamically according to the period, offset and schedule. 
-The `GROUP BY` clause is added dynamically according to the dimensions 
-passed to the `groupBy` method. 
+The query to execute. Must not contain a time condition
+in the `WHERE` clause or contain a `GROUP BY` clause.
+The time conditions are added dynamically according to the period, offset and schedule.
+The `GROUP BY` clause is added dynamically according to the dimensions
+passed to the `groupBy` method.
 
 
 ```javascript
@@ -159,9 +183,9 @@ Returns: [QueryNode](/kapacitor/v1.3/nodes/query_node/)
 
 ### Stats
 
-Create a new stream of data that contains the internal statistics of the node. 
-The interval represents how often to emit the statistics based on real time. 
-This means the interval time is independent of the times of the data points the source node is receiving. 
+Create a new stream of data that contains the internal statistics of the node.
+The interval represents how often to emit the statistics based on real time.
+This means the interval time is independent of the times of the data points the source node is receiving.
 
 
 ```javascript
@@ -169,4 +193,4 @@ node|stats(interval time.Duration)
 ```
 
 Returns: [StatsNode](/kapacitor/v1.3/nodes/stats_node/)
-
+-->
