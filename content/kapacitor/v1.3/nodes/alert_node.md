@@ -2013,7 +2013,9 @@ node|cumulativeSum(field string)
 ```
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
+-->
 
+## Alias 
 
 ### Deadman
 
@@ -2099,6 +2101,7 @@ node|deadman(threshold float64, interval time.Duration, expr ...ast.LambdaNode)
 
 Returns: [AlertNode](/kapacitor/v1.3/nodes/alert_node/)
 
+<!--
 
 ### Default
 
