@@ -34,6 +34,16 @@ The signature of each function depends on what the function does.
 | **[as](#as)( name `string`)** | _name_ defines the name of the result field.  If not defined, the name of the result field will be the alias name. |
 | **[usePointTimes](#usepointtimes)()** | Takes no args.  Sets a flag telling Kapacitor to use the selected point time instead of the time of the batch. |
 
+**Standard Chaining Methods:**
+
+[Alert](/kapacitor/v1.3/nodes/alert_node/), [Combine](/kapacitor/v1.3/nodes/combine_node/), [Default](/kapacitor/v1.3/nodes/default_node/),  [Delete](/kapacitor/v1.3/nodes/delete_node/), [Derivative](/kapacitor/v1.3/nodes/derivative_node/), [Eval](/kapacitor/v1.3/nodes/eval_node/), [Flatten](/kapacitor/v1.3/nodes/flatten_node/), [GroupBy](/kapacitor/v1.3/nodes/group_by_node/), [HttpOut](/kapacitor/v1.3/nodes/http_out_node/), [HttpPost](/kapacitor/v1.3/nodes/http_post_node/), [InfluxDBOut](/kapacitor/v1.3/nodes/influx_d_b_out_node/), [Join](/kapacitor/v1.3/nodes/join_node/), [K8sAutoscale](/kapacitor/v1.3/nodes/k8s_autoscale_node/), [KapacitorLoopback](/kapacitor/v1.3/nodes/kapacitor_loopback_node/),  [Log](/kapacitor/v1.3/nodes/log_node/), [Sample](/kapacitor/v1.3/nodes/sample_node/), [Shift](/kapacitor/v1.3/nodes/shift_node/), [StateCount](/kapacitor/v1.3/nodes/state_count_node/), [StateDuration](/kapacitor/v1.3/nodes/state_duration_node/), [Stats](/kapacitor/v1.3/nodes/stats_node/), [Union](/kapacitor/v1.3/nodes/union_node/), [Where](/kapacitor/v1.3/nodes/where_node/), [Window](/kapacitor/v1.3/nodes/window_node/)
+
+**Alias Chaining Methods:**
+
+Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_q_l_node/) or [Alert](/kapacitor/v1.3/nodes/alert_node/) node by self-descriptively wrapping some or all of their functionality.  
+
+ [Bottom](/kapacitor/v1.3/nodes/influx_q_l_node/#bottom),  [Count](/kapacitor/v1.3/nodes/influx_q_l_node/#count), [CumulativeSum](/kapacitor/v1.3/nodes/influx_q_l_node/#cumulativesum), [Deadman](/kapacitor/v1.3/nodes/alert_node/#deadman), [Difference](/kapacitor/v1.3/nodes/influx_q_l_node/#difference), [Distinct](/kapacitor/v1.3/nodes/influx_q_l_node/#distinct), , [Elapsed](/kapacitor/v1.3/nodes/influx_q_l_node/#elapsed), [First](/kapacitor/v1.3/nodes/influx_q_l_node/#first), [HoltWinters](/kapacitor/v1.3/nodes/influx_q_l_node/#holtwinters), [HoltWintersWithFit](/kapacitor/v1.3/nodes/influx_q_l_node/#holtwinterswithfit), ,  [Last](/kapacitor/v1.3/nodes/influx_q_l_node/#last), [Max](/kapacitor/v1.3/nodes/influx_q_l_node/#max), [Mean](/kapacitor/v1.3/nodes/influx_q_l_node/#mean), [Median](/kapacitor/v1.3/nodes/influx_q_l_node/#median), [Min](/kapacitor/v1.3/nodes/influx_q_l_node/#min), [Mode](/kapacitor/v1.3/nodes/influx_q_l_node/#mode), [MovingAverage](/kapacitor/v1.3/nodes/influx_q_l_node/#movingaverage), [Percentile](/kapacitor/v1.3/nodes/influx_q_l_node/#percentile),  [Spread](/kapacitor/v1.3/nodes/influx_q_l_node/#spread),  [Stddev](/kapacitor/v1.3/nodes/influx_q_l_node/#stddev), [Sum](/kapacitor/v1.3/nodes/influx_q_l_node/#sum), [Top](/kapacitor/v1.3/nodes/influx_q_l_node/#top)
+
 
 <a id="example"></a>
 <hr/>
