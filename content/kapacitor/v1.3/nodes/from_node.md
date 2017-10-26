@@ -39,7 +39,9 @@ The stream node allows you to select which portion of the stream you want to pro
 
 **Alias Chaining Methods**
 
-[Bottom](/kapacitor/v1.3/nodes/from_node/#bottom), [Count](/kapacitor/v1.3/nodes/from_node/#count),	[CumulativeSum](/kapacitor/v1.3/nodes/from_node/#cumulativesum), [Deadman](/kapacitor/v1.3/nodes/from_node/#deadman), [Difference](/kapacitor/v1.3/nodes/from_node/#difference), [Distinct](/kapacitor/v1.3/nodes/from_node/#distinct), [Elapsed](/kapacitor/v1.3/nodes/from_node/#elapsed), [First](/kapacitor/v1.3/nodes/from_node/#first), [HoltWinters](/kapacitor/v1.3/nodes/from_node/#holtwinters), [HoltWintersWithFit](/kapacitor/v1.3/nodes/from_node/#holtwinterswithfit), [Last](/kapacitor/v1.3/nodes/from_node/#last), [Max](/kapacitor/v1.3/nodes/from_node/#max), [Mean](/kapacitor/v1.3/nodes/from_node/#mean), [Median](/kapacitor/v1.3/nodes/from_node/#median), [Min](/kapacitor/v1.3/nodes/from_node/#min), [Mode](/kapacitor/v1.3/nodes/from_node/#mode), [MovingAverage](/kapacitor/v1.3/nodes/from_node/#movingaverage), [Percentile](/kapacitor/v1.3/nodes/from_node/#percentile), 	[Spread](/kapacitor/v1.3/nodes/from_node/#spread), [Stddev](/kapacitor/v1.3/nodes/from_node/#stddev), [Sum](/kapacitor/v1.3/nodes/from_node/#sum), [Top](/kapacitor/v1.3/nodes/from_node/#top)
+Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_q_l_node/) or [Alert](/kapacitor/v1.3/nodes/alert_node/) node by self-descriptively wrapping some or all of their functionality.  
+
+[Bottom](/kapacitor/v1.3/nodes/influx_q_l_node/#bottom), [Count](/kapacitor/v1.3/nodes/influx_q_l_node/#count),	[CumulativeSum](/kapacitor/v1.3/nodes/influx_q_l_node/#cumulativesum), [Deadman](/kapacitor/v1.3/nodes/alert_node/#deadman), [Difference](/kapacitor/v1.3/nodes/influx_q_l_node/#difference), [Distinct](/kapacitor/v1.3/nodes/influx_q_l_node/#distinct), [Elapsed](/kapacitor/v1.3/nodes/influx_q_l_node/#elapsed), [First](/kapacitor/v1.3/nodes/influx_q_l_node/#first), [HoltWinters](/kapacitor/v1.3/nodes/influx_q_l_node/#holtwinters), [HoltWintersWithFit](/kapacitor/v1.3/nodes/influx_q_l_node/#holtwinterswithfit), [Last](/kapacitor/v1.3/nodes/influx_q_l_node/#last), [Max](/kapacitor/v1.3/nodes/influx_q_l_node/#max), [Mean](/kapacitor/v1.3/nodes/influx_q_l_node/#mean), [Median](/kapacitor/v1.3/nodes/influx_q_l_node/#median), [Min](/kapacitor/v1.3/nodes/influx_q_l_node/#min), [Mode](/kapacitor/v1.3/nodes/influx_q_l_node/#mode), [MovingAverage](/kapacitor/v1.3/nodes/influx_q_l_node/#movingaverage), [Percentile](/kapacitor/v1.3/nodes/influx_q_l_node/#percentile), 	[Spread](/kapacitor/v1.3/nodes/influx_q_l_node/#spread), [Stddev](/kapacitor/v1.3/nodes/influx_q_l_node/#stddev), [Sum](/kapacitor/v1.3/nodes/influx_q_l_node/#sum), [Top](/kapacitor/v1.3/nodes/influx_q_l_node/#top)
 
 
 <a id="example"></a>
@@ -354,7 +356,7 @@ Chaining methods create a new node in the pipeline as a child of the calling nod
 They do not modify the calling node.
 Chaining methods are marked using the `|` operator.
 
--->
+
 
 Alias Chaining Methods
 ----------------
@@ -363,7 +365,7 @@ Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_
 
 
 ### Alert
-<!--
+
 Create an alert node, which can trigger alerts.
 
 
@@ -372,7 +374,7 @@ node|alert()
 ```
 
 Returns: [AlertNode](/kapacitor/v1.3/nodes/alert_node/)
--->
+
 
 ### Bottom
 
@@ -385,7 +387,7 @@ node|bottom(num int64, field string, fieldsAndTags ...string)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-<!--
+
 ### Combine
 
 Combine this node with itself. The data are combined on timestamp.
@@ -396,7 +398,7 @@ node|combine(expressions ...ast.LambdaNode)
 ```
 
 Returns: [CombineNode](/kapacitor/v1.3/nodes/combine_node/)
--->
+
 
 ### Count
 
@@ -507,7 +509,7 @@ node|deadman(threshold float64, interval time.Duration, expr ...ast.LambdaNode)
 
 Returns: [AlertNode](/kapacitor/v1.3/nodes/alert_node/)
 
-<!--
+
 ### Default
 
 Create a node that can set defaults for missing tags or fields.
@@ -542,7 +544,7 @@ node|derivative(field string)
 ```
 
 Returns: [DerivativeNode](/kapacitor/v1.3/nodes/derivative_node/)
--->
+
 
 ### Difference
 
@@ -579,7 +581,7 @@ node|elapsed(field string, unit time.Duration)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-<!--
+
 ### Eval
 
 Create an eval node that will evaluate the given transformation function to each data point.
@@ -592,7 +594,7 @@ node|eval(expressions ...ast.LambdaNode)
 ```
 
 Returns: [EvalNode](/kapacitor/v1.3/nodes/eval_node/)
--->
+
 
 ### First
 
@@ -605,7 +607,7 @@ node|first(field string)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-<!--
+
 ### Flatten
 
 Flatten points with similar times into a single point.
@@ -654,7 +656,7 @@ node|from()
 ```
 
 Returns: [FromNode](/kapacitor/v1.3/nodes/from_node/)
--->
+
 
 ### HoltWinters
 
@@ -680,7 +682,7 @@ node|holtWintersWithFit(field string, h int64, m int64, interval time.Duration)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-<!--
+
 ### HttpOut
 
 Create an HTTP output node that caches the most recent data it has received.
@@ -758,7 +760,7 @@ node|kapacitorLoopback()
 
 Returns: [KapacitorLoopbackNode](/kapacitor/v1.3/nodes/kapacitor_loopback_node/)
 
--->
+
 ### Last
 
 Select the last point.
@@ -770,7 +772,7 @@ node|last(field string)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-<!--
+
 ### Log
 
 Create a node that logs all data it receives.
@@ -781,7 +783,7 @@ node|log()
 ```
 
 Returns: [LogNode](/kapacitor/v1.3/nodes/log_node/)
--->
+
 
 ### Max
 
@@ -868,7 +870,7 @@ node|percentile(field string, percentile float64)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-<!--
+
 ### Sample
 
 Create a new node that samples the incoming points or batches.
@@ -893,7 +895,7 @@ node|shift(shift time.Duration)
 ```
 
 Returns: [ShiftNode](/kapacitor/v1.3/nodes/shift_node/)
--->
+
 
 ### Spread
 
@@ -906,7 +908,7 @@ node|spread(field string)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-<!--
+
 ### StateCount
 
 Create a node that tracks number of consecutive points in a given state.
@@ -943,7 +945,7 @@ node|stats(interval time.Duration)
 ```
 
 Returns: [StatsNode](/kapacitor/v1.3/nodes/stats_node/)
--->
+
 
 ### Stddev
 
@@ -980,7 +982,7 @@ node|top(num int64, field string, fieldsAndTags ...string)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-<!--
+
 ### Union
 
 Perform the union of this node and all other given nodes.

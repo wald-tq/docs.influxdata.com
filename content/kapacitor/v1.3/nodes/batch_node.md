@@ -35,8 +35,9 @@ follow.
 
 **Alias Chaining Method:**
 
-[Deadman](/kapacitor/v1.3/nodes/batch_node/#deadman)
+Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_q_l_node/) or [Alert](/kapacitor/v1.3/nodes/alert_node/) node by self-descriptively wrapping some or all of their functionality.  
 
+[Deadman](/kapacitor/v1.3/nodes/alert_node/#deadman)
 
 <a id="example"></a>
 <hr/>
@@ -73,7 +74,7 @@ Index
 -	[Query](/kapacitor/v1.3/nodes/batch_node/#query)
 -	[Stats](/kapacitor/v1.3/nodes/batch_node/#stats)
 
--->
+
 
 Alias Chaining Methods
 ----------------------
@@ -164,7 +165,6 @@ node|deadman(threshold float64, interval time.Duration, expr ...ast.LambdaNode)
 
 Returns: [AlertNode](/kapacitor/v1.3/nodes/alert_node/)
 
-<!--
 ### Query
 
 The query to execute. Must not contain a time condition

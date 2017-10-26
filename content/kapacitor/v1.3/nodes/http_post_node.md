@@ -18,16 +18,28 @@ method on httpPost. Multiple endpoint property methods may be specified.
 
 | Signature |  Description |
 |:----------|:--|
-| **[httpPostNode](#example)(url `string`)** | _url_ (optional) specifies the URL to which the data will be posted.  |
+| **[httpPost](#example)( url `string`)** | _url_ (optional) specifies the URL to which the data will be posted.  |
 
 
 **Property Methods**
 
 | Setters | Description |
 |:-----------|:---|
-| [endpoint](/kapacitor/v1.3/nodes/http_post_node/#endpoint)(endpoint `string`) | _endpoint_ is the endpoint to which data will be posted.  Can be simply a context.  |
-| [header](/kapacitor/v1.3/nodes/http_post_node/#header)(key `string`, value `string`) | _key_ is a key name to be added to the header.  _value_ is a value to be assigned to the key. |
-| [headers](/kapacitor/v1.3/nodes/http_post_node/#headers)(values `map[string]string`) |  |
+| [endpoint](/kapacitor/v1.3/nodes/http_post_node/#endpoint)( endpoint `string`) | _endpoint_ is the endpoint to which data will be posted.  It can be simply a resource to be located on the default server.  |
+| [header](/kapacitor/v1.3/nodes/http_post_node/#header)( key `string`, value `string`) | _key_ is a key name to be added to the header.  _value_ is a value to be assigned to the key.  This setter can be called more than once to define multiple header key value pairs. |
+
+**Standard Chaining Methods:**
+
+[Alert](/kapacitor/v1.3/nodes/alert_node/), [Combine](/kapacitor/v1.3/nodes/combine_node/), [Default](/kapacitor/v1.3/nodes/default_node/),  [Delete](/kapacitor/v1.3/nodes/delete_node/), [Derivative](/kapacitor/v1.3/nodes/derivative_node/), [Eval](/kapacitor/v1.3/nodes/eval_node/), [Flatten](/kapacitor/v1.3/nodes/flatten_node/), [GroupBy](/kapacitor/v1.3/nodes/group_by_node/), [HttpOut](/kapacitor/v1.3/nodes/http_out_node/), [HttpPost](/kapacitor/v1.3/nodes/http_post_node/), [InfluxDBOut](/kapacitor/v1.3/nodes/influx_d_b_out_node/), [Join](/kapacitor/v1.3/nodes/join_node/), [K8sAutoscale](/kapacitor/v1.3/nodes/k8s_autoscale_node/), [KapacitorLoopback](/kapacitor/v1.3/nodes/kapacitor_loopback_node/),  [Log](/kapacitor/v1.3/nodes/log_node/), [Sample](/kapacitor/v1.3/nodes/sample_node/), [Shift](/kapacitor/v1.3/nodes/shift_node/), [StateCount](/kapacitor/v1.3/nodes/state_count_node/), [StateDuration](/kapacitor/v1.3/nodes/state_duration_node/), [Stats](/kapacitor/v1.3/nodes/stats_node/), [Union](/kapacitor/v1.3/nodes/union_node/), [Where](/kapacitor/v1.3/nodes/where_node/), [Window](/kapacitor/v1.3/nodes/window_node/)
+
+**Alias Chaining Methods:**
+
+Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_q_l_node/) or [Alert](/kapacitor/v1.3/nodes/alert_node/) node by self-descriptively wrapping some or all of their functionality.  
+
+ [Bottom](/kapacitor/v1.3/nodes/influx_q_l_node/#bottom),  [Count](/kapacitor/v1.3/nodes/influx_q_l_node/#count), [CumulativeSum](/kapacitor/v1.3/nodes/influx_q_l_node/#cumulativesum), [Deadman](/kapacitor/v1.3/nodes/alert_node/#deadman), [Difference](/kapacitor/v1.3/nodes/influx_q_l_node/#difference), [Distinct](/kapacitor/v1.3/nodes/influx_q_l_node/#distinct), , [Elapsed](/kapacitor/v1.3/nodes/influx_q_l_node/#elapsed), [First](/kapacitor/v1.3/nodes/influx_q_l_node/#first), [HoltWinters](/kapacitor/v1.3/nodes/influx_q_l_node/#holtwinters), [HoltWintersWithFit](/kapacitor/v1.3/nodes/influx_q_l_node/#holtwinterswithfit), ,  [Last](/kapacitor/v1.3/nodes/influx_q_l_node/#last), [Max](/kapacitor/v1.3/nodes/influx_q_l_node/#max), [Mean](/kapacitor/v1.3/nodes/influx_q_l_node/#mean), [Median](/kapacitor/v1.3/nodes/influx_q_l_node/#median), [Min](/kapacitor/v1.3/nodes/influx_q_l_node/#min), [Mode](/kapacitor/v1.3/nodes/influx_q_l_node/#mode), [MovingAverage](/kapacitor/v1.3/nodes/influx_q_l_node/#movingaverage), [Percentile](/kapacitor/v1.3/nodes/influx_q_l_node/#percentile),  [Spread](/kapacitor/v1.3/nodes/influx_q_l_node/#spread),  [Stddev](/kapacitor/v1.3/nodes/influx_q_l_node/#stddev), [Sum](/kapacitor/v1.3/nodes/influx_q_l_node/#sum), [Top](/kapacitor/v1.3/nodes/influx_q_l_node/#top)
+
+<a id="example"></a>
+<hr/>
 
 Example:
 
@@ -57,7 +69,7 @@ Example:
 ```
 
 
-
+<!--
 Index
 -----
 
@@ -114,6 +126,7 @@ Index
 -	[Union](/kapacitor/v1.3/nodes/http_post_node/#union)
 -	[Where](/kapacitor/v1.3/nodes/http_post_node/#where)
 -	[Window](/kapacitor/v1.3/nodes/http_post_node/#window)
+-->
 
 Properties
 ----------
@@ -145,6 +158,8 @@ node.endpoint(endpoint string)
 
 ### Header
 
+Add one or more headers to the POST request.  
+
 Example:
 
 
@@ -152,7 +167,9 @@ Example:
     stream
          |httpPost()
             .endpoint('example')
-              .header('my', 'header')
+              .header('from', 'tester@influxdata.com')
+              .header('host', '192.168.0.7')
+              .header('latest', 'true')
 ```
 
 
@@ -161,6 +178,7 @@ Example:
 node.header(k string, v string)
 ```
 
+<!-- Seems Headers is used internally, no setter in pipeline/http_post.go
 
 ### Headers
 
@@ -170,6 +188,14 @@ Headers
 ```javascript
 node.headers(value map[string]string)
 ```
+-->
+
+<!--
+Alias Chaining Methods
+----------------
+
+Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_q_l_node/) or [Alert](/kapacitor/v1.3/nodes/alert_node/) node by self-descriptively wrapping some or all of their functionality.  
+
 
 
 Chaining Methods
@@ -178,6 +204,7 @@ Chaining Methods
 Chaining methods create a new node in the pipeline as a child of the calling node.
 They do not modify the calling node.
 Chaining methods are marked using the `|` operator.
+
 
 
 ### Alert
@@ -325,7 +352,7 @@ node|deadman(threshold float64, interval time.Duration, expr ...ast.LambdaNode)
 
 Returns: [AlertNode](/kapacitor/v1.3/nodes/alert_node/)
 
-
+<!--
 ### Default
 
 Create a node that can set defaults for missing tags or fields.
@@ -481,7 +508,7 @@ node|holtWintersWithFit(field string, h int64, m int64, interval time.Duration)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-
+<!--
 ### HttpOut
 
 Create an HTTP output node that caches the most recent data it has received.
@@ -571,7 +598,7 @@ node|last(field string)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-
+<!--
 ### Log
 
 Create a node that logs all data it receives.
@@ -707,7 +734,7 @@ node|spread(field string)
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 
-
+<!--
 ### StateCount
 
 Create a node that tracks number of consecutive points in a given state.
@@ -746,6 +773,7 @@ node|stats(interval time.Duration)
 Returns: [StatsNode](/kapacitor/v1.3/nodes/stats_node/)
 
 
+
 ### Stddev
 
 Compute the standard deviation.
@@ -780,6 +808,7 @@ node|top(num int64, field string, fieldsAndTags ...string)
 ```
 
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
+
 
 
 ### Union
@@ -818,3 +847,4 @@ node|window()
 ```
 
 Returns: [WindowNode](/kapacitor/v1.3/nodes/window_node/)
+-->
