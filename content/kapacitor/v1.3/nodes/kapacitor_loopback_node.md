@@ -10,10 +10,39 @@ menu:
     parent: nodes
 ---
 
-Writes the data back into the Kapacitor stream. 
-To write data to a remote Kapacitor instance use the InfluxDBOut node. 
+Writes the data back into the Kapacitor stream.
 
-Example: 
+**Standard Constructor**
+
+| Signature |  Description |
+|:----------|:--|
+| **[kapacitorLoopback](#example)()** | Chaining method takes no arguments   |
+
+**Property Methods**
+
+| Setters | Description |
+|:-----------|:---|
+| **[database](#database)( name `string`)** | _name_ is the name of the databases to which the task will connect. |
+| **[measurement](#measurement)( name `string` )** | _name_ is the name of the measurement. |
+| **[retentionPolicy](#retentionpolicy)( name `string`)** | _name_ is the name of the retention policy. |
+| **[tag](#tag)( key `string`, value `string` )** | _key_ is the key name of the new tag to be added to the series.  _value_ is the value to assign to the key.  Can be called more than once to set multiple tags. |
+
+**Standard Chaining Method:**
+
+[Stats](/kapacitor/v1.3/nodes/stats_node/)
+
+**Alias Chaining Method:**
+
+Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_q_l_node/) or [Alert](/kapacitor/v1.3/nodes/alert_node/) node by self-descriptively wrapping some or all of their functionality.  
+
+  [Deadman](/kapacitor/v1.3/nodes/alert_node/#deadman)
+
+<hr/>
+
+To write data to a remote Kapacitor instance use the InfluxDBOut node.
+<a id="example"></a>
+
+Example:
 
 
 ```javascript
@@ -26,15 +55,15 @@ Example:
 ```
 
 
-NOTE: It is possible to create infinite loops using this node. 
-Take care to ensure you do not chain tasks together creating a loop. 
+NOTE: It is possible to create infinite loops using this node.
+Take care to ensure you do not chain tasks together creating a loop.
 
-Available Statistics: 
+Available Statistics:
 
-* points_written -- number of points written back to Kapacitor 
+* points_written -- number of points written back to Kapacitor
 
 
-
+<!--
 Index
 -----
 
@@ -49,6 +78,8 @@ Index
 
 -	[Deadman](/kapacitor/v1.3/nodes/kapacitor_loopback_node/#deadman)
 -	[Stats](/kapacitor/v1.3/nodes/kapacitor_loopback_node/#stats)
+-->
+
 
 Properties
 ----------
@@ -60,7 +91,7 @@ Property methods are marked using the `.` operator.
 
 ### Database
 
-The name of the database. 
+The name of the database.
 
 
 ```javascript
@@ -70,7 +101,7 @@ node.database(value string)
 
 ### Measurement
 
-The name of the measurement. 
+The name of the measurement.
 
 
 ```javascript
@@ -80,7 +111,7 @@ node.measurement(value string)
 
 ### RetentionPolicy
 
-The name of the retention policy. 
+The name of the retention policy.
 
 
 ```javascript
@@ -90,8 +121,8 @@ node.retentionPolicy(value string)
 
 ### Tag
 
-Add a static tag to all data points. 
-Tag can be called more than once. 
+Add a static tag to all data points.
+Tag can be called more than once.
 
 
 
@@ -99,7 +130,7 @@ Tag can be called more than once.
 node.tag(key string, value string)
 ```
 
-
+<!--
 Chaining Methods
 ----------------
 
@@ -110,13 +141,13 @@ Chaining methods are marked using the `|` operator.
 
 ### Deadman
 
-Helper function for creating an alert on low throughput, a.k.a. deadman&#39;s switch. 
+Helper function for creating an alert on low throughput, a.k.a. deadman&#39;s switch.
 
-- Threshold -- trigger alert if throughput drops below threshold in points/interval. 
-- Interval -- how often to check the throughput. 
-- Expressions -- optional list of expressions to also evaluate. Useful for time of day alerting. 
+- Threshold -- trigger alert if throughput drops below threshold in points/interval.
+- Interval -- how often to check the throughput.
+- Expressions -- optional list of expressions to also evaluate. Useful for time of day alerting.
 
-Example: 
+Example:
 
 
 ```javascript
@@ -129,8 +160,8 @@ Example:
     data...
 ```
 
-The above is equivalent to this 
-Example: 
+The above is equivalent to this
+Example:
 
 
 ```javascript
@@ -151,10 +182,10 @@ Example:
     data...
 ```
 
-The `id` and `message` alert properties can be configured globally via the &#39;deadman&#39; configuration section. 
+The `id` and `message` alert properties can be configured globally via the &#39;deadman&#39; configuration section.
 
-Since the [AlertNode](/kapacitor/v1.3/nodes/alert_node/) is the last piece it can be further modified as usual. 
-Example: 
+Since the [AlertNode](/kapacitor/v1.3/nodes/alert_node/) is the last piece it can be further modified as usual.
+Example:
 
 
 ```javascript
@@ -169,8 +200,8 @@ Example:
     data...
 ```
 
-You can specify additional lambda expressions to further constrain when the deadman&#39;s switch is triggered. 
-Example: 
+You can specify additional lambda expressions to further constrain when the deadman&#39;s switch is triggered.
+Example:
 
 
 ```javascript
@@ -195,9 +226,9 @@ Returns: [AlertNode](/kapacitor/v1.3/nodes/alert_node/)
 
 ### Stats
 
-Create a new stream of data that contains the internal statistics of the node. 
-The interval represents how often to emit the statistics based on real time. 
-This means the interval time is independent of the times of the data points the source node is receiving. 
+Create a new stream of data that contains the internal statistics of the node.
+The interval represents how often to emit the statistics based on real time.
+This means the interval time is independent of the times of the data points the source node is receiving.
 
 
 ```javascript
@@ -205,4 +236,4 @@ node|stats(interval time.Duration)
 ```
 
 Returns: [StatsNode](/kapacitor/v1.3/nodes/stats_node/)
-
+-->
