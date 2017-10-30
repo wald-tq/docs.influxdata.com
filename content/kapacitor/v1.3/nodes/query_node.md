@@ -18,7 +18,7 @@ an InfluxDB database and then passed into the data pipeline.
 
 | Signature | Description |
 |:----------|:------------|
-| **[query](#example)( query `string` )** | _query_ argument defines the InfluxQL query to be executed. |
+| **[query](#example)( query `string` )** | _query_ defines the InfluxQL query to be executed. |
 
 **Property Methods**
 
@@ -30,7 +30,7 @@ an InfluxDB database and then passed into the data pipeline.
 | **[cron](#cron)( schedule `string` )** | _schedule_ uses cron syntax to schedule when the query will be executed.  Mutually exclusive with the _every_ property. |
 | **[every](#every)( interval `duration` )** | _interval_ sets how often the IndluxDB will be queried. |
 | **[fill](#fill)( value `interface{}`)** | _value_ will be filled into the data.  Valid values are: <ul><li>`<any numerical value>` - value will be used </li><li>`null` - exhibits the same behavior as default</li><li>`previous` - reports the value of the previous window</li><li>`none` - suppresses timestamps and values where the value is null.</li></ul> |
-| **[groupBy](#groupby)(dimensions`...interface{}`)** | _dimensions_ are the dimensions of the data series, by which the data will be group.  See the [detailed discussion](#groupby) below. |
+| **[groupBy](#groupby)( dims`...interface{}`)** | _dims_ are the dimensions of the data series, by which the data will be group.  See the [detailed discussion](#groupby) below. |
 | **[groupByMeasurement](#groupbymeasurement)()**| Has no arguments.  Sets a flag that will tell Kapacitor to include the measurement name, along with any other dimensions, in the group ID. |
 | **[offset](#offset)( offset `time.Duration`)** | _offset_ sets how far back, from the current time, the data will be queried. |
 | **[period](#period)( frame `time.Duration`)** | _frame_ sets the length of time that will be queried. |

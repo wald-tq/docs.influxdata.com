@@ -10,7 +10,7 @@ menu:
     parent: nodes
 ---
 
-A `window` node caches data within a moving time range.
+A WindowNode caches data within a moving time range.
 
 **Standard Constructor**
 

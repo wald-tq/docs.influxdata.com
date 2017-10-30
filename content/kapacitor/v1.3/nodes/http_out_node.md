@@ -12,11 +12,6 @@ menu:
 
 An [HTTPOutNode](/kapacitor/v1.3/nodes/http_out_node/) caches the most recent data for each group it has received.
 
-The cached data is available at the given endpoint.
-The endpoint is the relative path from the API endpoint of the running task.
-For example if the task endpoint is at `/kapacitor/v1/tasks/<task_id>` and endpoint is
-`top10`, then the data can be requested from `/kapacitor/v1/tasks/<task_id>/top10`.
-
 **Standard Constructor**
 
 | Signature |  Description |
@@ -38,8 +33,15 @@ Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_
  [Bottom](/kapacitor/v1.3/nodes/influx_q_l_node/#bottom),  [Count](/kapacitor/v1.3/nodes/influx_q_l_node/#count), [CumulativeSum](/kapacitor/v1.3/nodes/influx_q_l_node/#cumulativesum), [Deadman](/kapacitor/v1.3/nodes/alert_node/#deadman), [Difference](/kapacitor/v1.3/nodes/influx_q_l_node/#difference), [Distinct](/kapacitor/v1.3/nodes/influx_q_l_node/#distinct), , [Elapsed](/kapacitor/v1.3/nodes/influx_q_l_node/#elapsed), [First](/kapacitor/v1.3/nodes/influx_q_l_node/#first), [HoltWinters](/kapacitor/v1.3/nodes/influx_q_l_node/#holtwinters), [HoltWintersWithFit](/kapacitor/v1.3/nodes/influx_q_l_node/#holtwinterswithfit), ,  [Last](/kapacitor/v1.3/nodes/influx_q_l_node/#last), [Max](/kapacitor/v1.3/nodes/influx_q_l_node/#max), [Mean](/kapacitor/v1.3/nodes/influx_q_l_node/#mean), [Median](/kapacitor/v1.3/nodes/influx_q_l_node/#median), [Min](/kapacitor/v1.3/nodes/influx_q_l_node/#min), [Mode](/kapacitor/v1.3/nodes/influx_q_l_node/#mode), [MovingAverage](/kapacitor/v1.3/nodes/influx_q_l_node/#movingaverage), [Percentile](/kapacitor/v1.3/nodes/influx_q_l_node/#percentile),  [Spread](/kapacitor/v1.3/nodes/influx_q_l_node/#spread),  [Stddev](/kapacitor/v1.3/nodes/influx_q_l_node/#stddev), [Sum](/kapacitor/v1.3/nodes/influx_q_l_node/#sum), [Top](/kapacitor/v1.3/nodes/influx_q_l_node/#top)
 
 
-<a id="example"></a>
 <hr/>
+
+The cached data is available at the given endpoint.
+The endpoint is the relative path from the API endpoint of the running task.
+For example if the task endpoint is at `/kapacitor/v1/tasks/<task_id>` and endpoint is
+`top10`, then the data can be requested from `/kapacitor/v1/tasks/<task_id>/top10`.
+
+<a id="example"></a>
+
 
 Example:
 

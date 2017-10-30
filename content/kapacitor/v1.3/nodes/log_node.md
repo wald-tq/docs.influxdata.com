@@ -10,7 +10,7 @@ menu:
     parent: nodes
 ---
 
-A node that logs all data that passes through the node.
+A node that logs all data that passes through it.
 
 **Standard Constructor**
 

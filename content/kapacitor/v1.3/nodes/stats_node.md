@@ -11,7 +11,7 @@ menu:
 ---
 
 <a id="top"></a>
-A [StatsNode](/kapacitor/v1.3/nodes/stats_node/) emits internal statistics about the another node at a given interval.
+A [StatsNode](/kapacitor/v1.3/nodes/stats_node/) emits internal statistics about another node at a given interval.
 
 **Standard Constructor**
 

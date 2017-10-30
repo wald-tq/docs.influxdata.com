@@ -10,7 +10,7 @@ menu:
     parent: nodes
 ---
 
-Shift points and batches in time, this is useful for comparing
+Shift points and batches in time. This is useful for comparing
 batches or points from different times.
 
 **Standard Constructor**
