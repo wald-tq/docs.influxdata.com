@@ -598,7 +598,7 @@ Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 ### Median
 
 Compute the median of the data. Note, this method is not a selector,
-if you want the median point use `.percentile(field, 50.0)`.
+if the median point is required, use `.percentile(field, 50.0)`.
 
 
 ```javascript

@@ -244,7 +244,7 @@ node.fill(value interface{})
 ### On
 
 Join on a subset of the group by dimensions.
-This is a special case where you want a single point from one parent to join with multiple
+This is a special case where a single point from one parent is to be joined with multiple
 points from a different parent.
 
 For example given two measurements:
@@ -252,10 +252,10 @@ For example given two measurements:
 1. building_power (a single value) -- tagged by building, value is the total power consumed by the building.
 2. floor_power (multiple values) -- tagged by building and floor, values are the total power consumed by each floor.
 
-You want to calculate the percentage of the total building power consumed by each floor.
-Since you only have one point per building you need it to join multiple times with
-the points from each floor. By defining the `on` dimensions as `building` we are saying
-that we want points that only have the building tag to be joined with more specifc points that
+The percentage of the total building power consumed by each floor needs to be calculated.
+Since only one point per building is available, it needs to be joined multiple times with
+the points from each floor. By defining the `on` dimensions as `building`, we are saying
+that we want points that only have the building tag to be joined with more specific points that have
 more tags, in this case the `floor` tag. In other words while we have points with tags building and floor
 we only want to join on the building tag.
 
@@ -301,7 +301,7 @@ node.streamName(value string)
 
 The maximum duration of time that two incoming points
 can be apart and still be considered to be equal in time.
-The joined data point&#39;s time will be rounded to the nearest
+The time of the joined data point will be rounded to the nearest
 multiple of the tolerance duration.
 
 

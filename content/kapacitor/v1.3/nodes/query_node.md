@@ -223,7 +223,7 @@ Can specify one time dimension.
 This property adds a `GROUP BY` clause to the query
 so all the normal behaviors when quering InfluxDB with a `GROUP BY` apply.
 
-Use group by time when your period is longer than your group by time interval.
+Use group by time when the period is longer than the group by time interval.
 
 Example:
 

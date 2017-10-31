@@ -173,7 +173,8 @@ node.as(names ...string)
 ### Delimiter
 
 The delimiter between the As names and existing field an tag keys.
-Can be the empty string, but you are responsible for ensuring conflicts are not possible if you use the empty string.
+Can be the empty string, however this can lead to conflicts.  It is the user's
+responsibility to ensure that conflicts do not occur.
 
 
 ```javascript
@@ -185,8 +186,8 @@ node.delimiter(value string)
 
 Maximum number of possible combinations.
 Since the number of possible combinations can grow very rapidly
-you can set a maximum number of combinations allowed.
-If the max is crossed, an error is logged and the combinations are not calculated.
+a maximum number of allowed combinations can be set.
+If the maximum number is exceeded, an error is logged and the combinations are not calculated.
 Default: 10,000
 
 
@@ -199,7 +200,7 @@ node.max(value int64)
 
 The maximum duration of time that two incoming points
 can be apart and still be considered to be equal in time.
-The joined data point&#39;s time will be rounded to the nearest
+The time of the joined data point will be rounded to the nearest
 multiple of the tolerance duration.
 
 

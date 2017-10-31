@@ -35,14 +35,14 @@ Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_
 <a id="example"></a>
 <hr/>
 
-A UDF is a custom script or binary that can communicate via Kapacitor&#39;s UDF RPC protocol.
-The path and arguments to the UDF program are specified in Kapacitor&#39;s configuration.
-Using TICKscripts you can invoke and configure your UDF for each task.
+A UDF is a custom script or binary that can communicate via the Kapacitor UDF RPC protocol.
+The path and arguments to the UDF program are specified in the Kapacitor configuration.
+Using TICKscripts UDF's can be invoked and configured for each task.
 
 See the [README.md](https://github.com/influxdata/kapacitor/tree/master/udf/agent/)
-for details on how to write your own UDF.
+for details on how to write a UDF.
 
-UDFs are configured via Kapacitor&#39;s main configuration file.
+UDFs are configured via the main Kapacitor configuration file.
 
 Example:
 
@@ -63,7 +63,7 @@ Example:
 
 
 ```javascript
-     // Given you have a UDF that computes a moving average
+     // Given: a UDF that computes a moving average
      // The UDF can define what its options are and then can be
      // invoked via a TICKscript like so:
      stream
@@ -75,9 +75,9 @@ Example:
          |httpOut('movingaverage')
 ```
 
-<a href="javascript:void()">SECURITY NOTE</a>: The UDF process runs as the same user as the Kapacitor daemon.
-As a consequence, please ensure that the user is properly secured along with the
-configuration file.
+> <a href="javascript:void()">SECURITY NOTE</a>: The UDF process runs as the same user as the Kapacitor daemon.
+> As a consequence, please ensure that the user is properly secured along with the
+> configuration file.
 
 <!--
 Index

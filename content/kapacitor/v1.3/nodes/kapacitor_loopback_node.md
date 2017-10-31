@@ -56,7 +56,7 @@ Example:
 
 
 NOTE: It is possible to create infinite loops using this node.
-Take care to ensure you do not chain tasks together creating a loop.
+Take care to ensure that tasks are not chained together creating a loop.
 
 Available Statistics:
 

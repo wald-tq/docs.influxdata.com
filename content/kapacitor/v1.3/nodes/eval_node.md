@@ -234,9 +234,7 @@ Example:
 The above example calculates an expression from the field `value`, casts it as a string, and names it `value_bucket`.
 The `value_bucket` expression is then converted from a field on the point to a tag `value_bucket` on the point.
 The `keep` property preserves the original field `value`.
-Tags are always kept since creating a tag implies you want to keep it.
-
-
+Tags are always kept since creating a tag implies the user intends to keep it.
 
 ```javascript
 node.tags(names ...string)

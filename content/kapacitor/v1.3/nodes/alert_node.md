@@ -893,7 +893,7 @@ node.log(filepath string)
 
 #### Log Mode
 
-File&#39;s mode and permissions, default is 0600
+Mode and permissions of the file, default is 0600
 NOTE: The leading 0 is required to interpret the value as an octal integer.
 
 
@@ -966,7 +966,7 @@ node.noRecoveries()
 ### OpsGenie
 
 Send alert to OpsGenie.
-To use OpsGenie alerting you must first enable the &#39;Alert Ingestion API&#39;
+To use OpsGenie alerting, first enable the &#39;Alert Ingestion API&#39;
 in the &#39;Integrations&#39; section of OpsGenie.
 Then place the API key from the URL into the &#39;opsgenie&#39; section of the Kapacitor configuration.
 
@@ -981,7 +981,7 @@ Example:
       recipients = ["jim", "bob"]
 ```
 
-With the correct configuration you can now use OpsGenie in TICKscripts.
+With the correct configuration OpsGenie can now be used in TICKscripts.
 
 Example:
 
@@ -1062,14 +1062,14 @@ node.opsGenie()
 ### PagerDuty
 
 Send the alert to PagerDuty.
-To use PagerDuty alerting you must first follow the steps to enable a new &#39;Generic API&#39; service.
+To use PagerDuty alerting, first follow the steps to enable a new &#39;Generic API&#39; service.
 
 From https://developer.pagerduty.com/documentation/integration/events
 
-1. In your account, under the Services tab, click &#34;Add New Service&#34;.
+1. When logged into an account, under the Services tab, click &#34;Add New Service&#34;.
 2. Enter a name for the service and select an escalation policy. Then, select &#34;Generic API&#34; for the Service Type.
 3. Click the &#34;Add Service&#34; button.
-4. Once the service is created, you&#39;ll be taken to the service page. On this page, you&#39;ll see the &#34;Service key&#34;, which is needed to access the API
+4. Once the service is created, the service page will load. On this page the &#34;Service key&#34;, which is needed to access the API, will be visible.
 
 Place the &#39;service key&#39; into the &#39;pagerduty&#39; section of the Kapacitor configuration as the option &#39;service-key&#39;.
 
@@ -1082,7 +1082,7 @@ Example:
       service-key = "xxxxxxxxx"
 ```
 
-With the correct configuration you can now use PagerDuty in TICKscripts.
+With the correct configuration PagerDuty can now be used in TICKscripts.
 
 Example:
 
@@ -1204,7 +1204,7 @@ node.post(urls ...string)
 ### Pushover
 
 Send the alert to Pushover.
-Register your application with Pushover at
+Register the application with Pushover at
 https://pushover.net/apps/build to get a
 Pushover token.
 
@@ -1249,9 +1249,9 @@ node.pushover()
 
 #### Pushover Device
 
-Users device name to send message directly to that device,
+User&#39;s device name to send message directly to that device,
 rather than all of a user&#39;s devices (multiple device names may
-be separated by a comma)
+be separated by a comma).
 
 
 ```javascript
@@ -1263,7 +1263,7 @@ node.pushover()
 #### Pushover Sound
 
 The name of one of the sounds supported by the device clients to override
-the user&#39;s default sound choice
+the user&#39;s default sound choice.
 
 
 ```javascript
@@ -1274,7 +1274,7 @@ node.pushover()
 
 #### Pushover Title
 
-Your message&#39;s title, otherwise your apps name is used
+The message title, otherwise the apps name is used.
 
 
 ```javascript
@@ -1285,7 +1285,7 @@ node.pushover()
 
 #### Pushover URL
 
-A supplementary URL to show with your message
+A supplementary URL to show with the message.
 
 
 ```javascript
@@ -1296,7 +1296,7 @@ node.pushover()
 
 #### Pushover URLTitle
 
-A title for your supplementary URL, otherwise just URL is shown
+A title for the supplementary URL, otherwise just URL is shown.
 
 
 ```javascript
@@ -1307,7 +1307,7 @@ node.pushover()
 
 #### Pushover UserKey
 
-User/Group key of your user (or you), viewable when logged
+User/Group key of the Pushover user, viewable when logged
 into the Pushover dashboard. Often referred to as USER_KEY
 in the Pushover documentation.
 If empty uses the user from the configuration.
@@ -1645,13 +1645,13 @@ node.stateChangesOnly(maxInterval ...time.Duration)
 ### Talk
 
 Send the alert to Talk.
-To use Talk alerting you must first follow the steps to create a new incoming webhook.
+To use Talk alerting, first follow the steps to create a new incoming webhook.
 
 1. Go to the URL https:/account.jianliao.com/signin.
-2. Sign in with you account. under the Team tab, click &#34;Integrations&#34;.
+2. Sign in to an account. under the Team tab, click &#34;Integrations&#34;.
 3. Select &#34;Customize service&#34;, click incoming Webhook &#34;Add&#34; button.
 4. After choose the topic to connect with &#34;xxx&#34;, click &#34;Confirm Add&#34; button.
-5. Once the service is created, you&#39;ll see the &#34;Generate Webhook url&#34;.
+5. Once the service is created, the &#34;Generate Webhook url&#34; will be visible.
 
 Place the &#39;Generate Webhook url&#39; into the &#39;Talk&#39; section of the Kapacitor configuration as the option &#39;url&#39;.
 
@@ -1843,7 +1843,7 @@ node.topic(value string)
 ### VictorOps
 
 Send alert to VictorOps.
-To use VictorOps alerting you must first enable the &#39;Alert Ingestion API&#39;
+To use VictorOps alerting, first enable the &#39;Alert Ingestion API&#39;
 in the &#39;Integrations&#39; section of VictorOps.
 Then place the API key from the URL into the &#39;victorops&#39; section of the Kapacitor configuration.
 
@@ -1857,7 +1857,7 @@ Example:
       routing-key = "everyone"
 ```
 
-With the correct configuration you can now use VictorOps in TICKscripts.
+With the correct configuration VictorOps can be used in TICKscripts.
 
 Example:
 
@@ -2015,7 +2015,7 @@ node|cumulativeSum(field string)
 Returns: [InfluxQLNode](/kapacitor/v1.3/nodes/influx_q_l_node/)
 -->
 
-## Alias 
+## Alias
 
 ### Deadman
 
@@ -2078,7 +2078,7 @@ Example:
     data...
 ```
 
-You can specify additional lambda expressions to further constrain when the deadman&#39;s switch is triggered.
+Additional lambda expressions can be specified to further constrain when the deadman&#39;s switch is triggered.
 Example:
 
 

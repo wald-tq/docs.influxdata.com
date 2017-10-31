@@ -182,7 +182,7 @@ node.on(dims ...string)
 
 The maximum duration of time that two incoming points
 can be apart and still be considered to be equal in time.
-The joined data point&#39;s time will be rounded to the nearest
+The time of the joined data point will be rounded to the nearest
 multiple of the tolerance duration.
 
 

@@ -64,9 +64,9 @@ Example:
         |httpOut('recent')
 ```
 
-This example emits the last `10 minute` period every `5 minutes` to the pipeline&#39;s `httpOut` node.
+This example emits the last `10 minute` period every `5 minutes` to the `httpOut` node of the pipeline.
 Because `every` is less than `period`, each time the window is emitted it contains `5 minutes` of
-new data and `5 minutes` of the previous period&#39;s data.
+new data and `5 minutes` of data from the previous period.
 
 NOTE: Because no `align` property is defined, the `window` edge is defined relative to the first data point.
 
@@ -145,8 +145,8 @@ Property methods are marked using the `.` operator.
 If the `align` property is not used to modify the `window` node, then the
 window alignment is assumed to start at the time of the first data point it receives.
 If `align` property is set, the window time edges
-will be truncated to the `every` property (For example, if a data point&#39;s time
-is 12:06 and the `every` property is `5m` then the data point&#39;s window will range
+will be truncated to the `every` property (For example, if the time of a data point
+is 12:06 and the `every` property is `5m` then window of the data point will range
 from 12:05 to 12:10).
 
 

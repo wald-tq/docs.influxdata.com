@@ -12,7 +12,7 @@ menu:
     weight: 3
 ---
 
-> Note: Before continuing, please make sure you have read the
+> Note: Before continuing, please make sure to read the
 > [TICKscript Language Specification](/kapacitor/v1.3/tick/).
 
 Property methods modify the node they are called on and return a
@@ -22,7 +22,7 @@ are:
 * [Batch Node](/kapacitor/v1.3/nodes/batch_node)
 * [Stream Node](/kapacitor/v1.3/nodes/stream_node)
 
-Which define the type of task that you are running (either
+Which define the type of task that will be run (either
 [stream](/kapacitor/v1.3/introduction/getting_started/#trigger-alert-from-stream-data)
 or
 [batch](/kapacitor/v1.3/introduction/getting_started/#trigger-alert-from-batch-data)). The
