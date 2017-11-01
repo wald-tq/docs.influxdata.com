@@ -37,12 +37,12 @@ Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_
 <hr/>
 
 The state is defined via a lambda expression. For each consecutive point for
-which the expression evaluates as true, the state count will be incremented
+which the expression evaluates as true, the state count will be incremented.
 When a point evaluates as false, the state count is reset.
 
 The state count will be added as an additional field to each point. If the
 expression evaluates as false, the value will be -1. If the expression
-generates an error during evaluation, the point is discarded, and does not
+generates an error during evaluation, the point is discarded and does not
 affect the state count.
 
 <a id="example"></a>
@@ -128,7 +128,7 @@ Properties
 ----------
 
 Property methods modify state on the calling node.
-They do not add another node to the pipeline, and always return a reference to the calling node.
+They do not add another node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the `.` operator.
 
 

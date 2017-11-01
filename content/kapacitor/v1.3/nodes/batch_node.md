@@ -19,7 +19,7 @@ tasks is an instance of a [BatchNode.](/kapacitor/v1.3/nodes/batch_node/)
 
 | Signature |  Description |
 |:----------|:--|
-| **[batch](#example)** | Not a "chaining method" and so it takes no arguments.  It is simply declared as a type without parentheses  |
+| **[batch](#example)** | Not a "chaining method" and so it takes no arguments.  It is simply declared without parentheses  |
 
 **Property Methods**
 

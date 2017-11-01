@@ -26,10 +26,10 @@ See the property [EvalNode.As](/kapacitor/v1.3/nodes/eval_node/#as) for details 
 
 | Setters | Description |
 |:-----------|:---|
-| [as](/kapacitor/v1.3/nodes/eval_node/#as)(names `[]string`) | _names_ sets the key names for new fields, which will hold the results of the lambda functions. |
-| [keep](/kapacitor/v1.3/nodes/eval_node/#keep)(names `[]string`) | _names_ defines the names of existing tags and fields to keep in the pipeline for downstream nodes. |
-| [quiet](/kapacitor/v1.3/nodes/eval_node/#quiet)() | No arguments.  Sets a flag to suppress errors during evaluation. |
-| [tags](/kapacitor/v1.3/nodes/eval_node/#tags)(names `[]string`) | _names_ sets the key names for new tags, which will hold the results of the lambda expressions. |
+| **[as](/kapacitor/v1.3/nodes/eval_node/#as)( names `[]string`)** | _names_ sets the key names for new fields, which will hold the results of the lambda functions. |
+| **[keep](/kapacitor/v1.3/nodes/eval_node/#keep)( names `[]string`)** | _names_ (optional) defines the names of existing fields to keep in the pipeline for downstream nodes. If no names are provided, then all fields are kept. |
+| **[quiet](/kapacitor/v1.3/nodes/eval_node/#quiet)()** | No arguments.  Sets a flag to suppress errors during evaluation. |
+| **[tags](/kapacitor/v1.3/nodes/eval_node/#tags)( names `[]string`)** | _names_ sets the key names for new tags, which will hold the results of the lambda expressions. |
 
 **Standard Chaining Methods:**
 
@@ -126,7 +126,7 @@ Properties
 ----------
 
 Property methods modify the state of the calling node.
-They do not add another node to the pipeline, and always return a reference to the calling node.
+They do not add another node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the `.` operator.
 
 

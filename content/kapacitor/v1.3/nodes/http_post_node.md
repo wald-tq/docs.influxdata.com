@@ -25,7 +25,7 @@ method on httpPost. Multiple endpoint property methods may be specified.
 
 | Setters | Description |
 |:-----------|:---|
-| [endpoint](/kapacitor/v1.3/nodes/http_post_node/#endpoint)( endpoint `string`) | _endpoint_ is the endpoint to which data will be posted.  It can be simply a resource to be located on the default server.  |
+| [endpoint](/kapacitor/v1.3/nodes/http_post_node/#endpoint)( endpoint `string`) | _endpoint_ (optional) is the endpoint to which data will be posted.  It can be simply a resource to be located on the default server.  |
 | [header](/kapacitor/v1.3/nodes/http_post_node/#header)( key `string`, value `string`) | _key_ is a key name to be added to the header.  _value_ is a value to be assigned to the key.  This setter can be called more than once to define multiple header key value pairs. |
 
 **Standard Chaining Methods:**
@@ -132,7 +132,7 @@ Properties
 ----------
 
 Property methods modify state on the calling node.
-They do not add another node to the pipeline, and always return a reference to the calling node.
+They do not add another node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the `.` operator.
 
 

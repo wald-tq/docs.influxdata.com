@@ -49,8 +49,8 @@ Example:
             .tag('host', '')
 ```
 
-The above example will set the field `value` to float64(0) if it does not already exist
-It will also set the tag `host` to string(&#34;&#34;) if it does not already exist.
+The above example will set the field `value` to float64(0), if it does not already exist.
+It will also set the tag `host` to string(&#34;&#34;), if it does not already exist.
 
 **Available Statistics:**
 
@@ -119,7 +119,7 @@ Properties
 ----------
 
 Property methods modify the state of the calling node.
-They do not add another node to the pipeline, and always return a reference to the calling node.
+They do not add another node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the `.` operator.
 
 

@@ -98,7 +98,7 @@ Properties
 ----------
 
 Property methods modify state on the calling node.
-They do not add another node to the pipeline, and always return a reference to the calling node.
+They do not add another node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the `.` operator.
 
 
@@ -128,7 +128,7 @@ node.cluster(value string)
 
 Create indicates that both the database and retention policy
 will be created, when the task is started.
-If the retention policy name is empty than no
+If the retention policy name is empty then no
 retention policy will be specified and
 the default retention policy name will be created.
 

@@ -21,7 +21,7 @@ method of this node.
 
 | Signature |  Description |
 |:----------|:--|
-| **[stream](#example)** | Not a "chaining method" and so it takes no arguments.  It is simply declared as a type without parentheses  |
+| **[stream](#example)** | Not a "chaining method" and so it takes no arguments.  It is simply declared without parentheses  |
 
 **Property Methods**
 

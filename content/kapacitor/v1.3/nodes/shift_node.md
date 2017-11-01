@@ -17,7 +17,7 @@ batches or points from different times.
 
 | Signature |  Description |
 |:----------|:--|
-| **[shift](#example)( shift `duration` )** | _shift_ is the amount of time to move the timestamps forward or backward in time.  To shift backward prefix the value with a minus sign. |
+| **[shift](#example)( shift `duration` )** | _shift_ is the amount of time to move the timestamps forward or backwards in time.  To shift backwards prefix the value with a minus sign. |
 
 **Property Methods**
 
@@ -54,7 +54,7 @@ Example:
         |shift(-10s)
 ```
 
-Shift all data points 10s backward in time.
+Shift all data points 10s backwards in time.
 
 <!--
 Index

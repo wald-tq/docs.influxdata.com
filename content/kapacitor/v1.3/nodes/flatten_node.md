@@ -41,14 +41,14 @@ Alias chaining methods create either an [InfluxQL](/kapacitor/v1.3/nodes/influx_
 <hr/>
 
 For example given two points:
-
+```
 m,host=A,port=80 bytes=3512
 m,host=A,port=443 bytes=6723
-
+```
 Flattening the points on `port` would result in a single point:
-
+```
 m,host=A 80.bytes=3512,443.bytes=6723
-
+```
 Example:
 
 
@@ -58,15 +58,15 @@ Example:
 ```
 
 If flattening on multiple dimensions the order is preserved:
-
+```
 m,host=A,port=80 bytes=3512
 m,host=A,port=443 bytes=6723
 m,host=B,port=443 bytes=7243
-
+```
 Flattening the points on `host` and `port` would result in a single point:
-
+```
 m A.80.bytes=3512,A.443.bytes=6723,B.443.bytes=7243
-
+```
 Example:
 
 
@@ -143,7 +143,7 @@ Properties
 ----------
 
 Property methods modify state on the calling node.
-They do not add another node to the pipeline, and always return a reference to the calling node.
+They do not add another node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the `.` operator.
 
 

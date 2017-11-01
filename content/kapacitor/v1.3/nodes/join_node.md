@@ -154,7 +154,7 @@ Properties
 ----------
 
 Property methods modify state on the calling node.
-They do not add another node to the pipeline, and always return a reference to the calling node.
+They do not add another node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the `.` operator.
 
 
@@ -254,10 +254,9 @@ For example given two measurements:
 
 The percentage of the total building power consumed by each floor needs to be calculated.
 Since only one point per building is available, it needs to be joined multiple times with
-the points from each floor. By defining the `on` dimensions as `building`, we are saying
-that we want points that only have the building tag to be joined with more specific points that have
-more tags, in this case the `floor` tag. In other words while we have points with tags building and floor
-we only want to join on the building tag.
+the points from each floor. By defining the `on` dimensions as `building`, only points that have the building tag are
+to be joined with more specific points that have more tags&mdash;in this case the `floor` tag.
+In other words, while the points have tags `building` and `floor`, the join should occur only on the `building` tag.
 
 Example:
 

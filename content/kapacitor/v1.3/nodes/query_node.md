@@ -136,7 +136,7 @@ Properties
 ----------
 
 Property methods modify the state on the calling node.  They do not add another
-node to the pipeline, and always return a reference to the calling node.
+node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the dot, `.`, operator.
 
 
@@ -315,7 +315,7 @@ node.groupByMeasurement()
 
 ### Offset
 
-How far back in time to query from the current time
+From the current time, how far back in time to query.
 
 For example with an Offest of 2 hours and an Every of 5m,
 Kapacitor will query InfluxDB every 5 minutes for the window of data 2 hours ago.

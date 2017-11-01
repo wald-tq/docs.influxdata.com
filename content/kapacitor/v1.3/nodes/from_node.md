@@ -22,14 +22,14 @@ A [FromNode](/kapacitor/v1.3/nodes/from_node/) selects a subset of the data flow
 
 | Setters | Description |
 |:-------------------------------|:------------|
-| [database](#database)(name `string`) | _name_ is the name of the database from which data will be sourced. |
-| [groupBy](#groupby)(tagKey `string`) | _tagKey_ is the key name of a tag by with the data will be grouped. Can be called more than once to set multiple tags. See the [detailed description](#groupby) below. |
-| [groupByMeasurement](#groupbymeasurement)() | Takes no arguments.  Sets an internal flag that will tell Kapacitor to include the measurement name, along with any other dimensions, in the group ID. |
-| [measurement](/#measurement)(name `string`) | _name_ is the name of the measurement from the InfluxDB database to be used. |
-| [retentionPolicy](#retentionpolicy)(name `string`) | _name_ is the name of the retention policy to be used in selecting the measurement. |
-| [round](#round)(boundary `duration`) | _boundary_ is the boundary to which timestamps will be rounded.  The nearest boundary is used. |
-| [truncate](#truncate)(resolution `duration`) | _resolution_ is the time resolution to be used when truncating timestamps. |
-| [where](#where)(filter `lambda`) | _filter_ is a boolean lambda expression used to filter data in the stream.  See the [detailed description](#where) below. Can be called more than once to apply multiple conditions. |
+| **[database](#database)( name `string`)** | _name_ is the name of the database from which data will be sourced. |
+| **[groupBy](#groupby)( tagKey `string`)** | _tagKey_ is the name of a tag by which the data will be grouped. Can be called more than once to set multiple tags. See the [detailed description](#groupby) below. |
+| **[groupByMeasurement](#groupbymeasurement)()** | Takes no arguments.  Sets an internal flag that will tell Kapacitor to include the measurement name, along with any other dimensions, in the group ID. |
+| **[measurement](/#measurement)( name `string`)** | _name_ is the name of the measurement from the InfluxDB database to be used. |
+| **[retentionPolicy](#retentionpolicy)( name `string`)** | _name_ is the name of the retention policy to be used in selecting the measurement. |
+| **[round](#round)( boundary `duration`)** | _boundary_ is the boundary to which timestamps will be rounded.  The nearest boundary is used. |
+| **[truncate](#truncate)( resolution `duration`)** | _resolution_ is the time resolution to be used when truncating timestamps. |
+| **[where](#where)( filter `lambda`)** | _filter_ is a boolean lambda expression used to filter data in the stream.  See the [detailed description](#where) below. Can be called more than once to apply multiple conditions. |
 
 **Standard Chaining Methods**
 
@@ -131,7 +131,7 @@ Properties
 ----------
 
 Property methods modify state on the calling node.
-They do not add another node to the pipeline, and always return a reference to the calling node.
+They do not add another node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the `.` operator.
 
 
@@ -289,7 +289,7 @@ Example:
 ```
 
 
-NOTE: Be careful to always use `|from` if when multiple different streams will be used.
+NOTE: Be careful to always use `|from` when multiple different streams will be used.
 
 Example:
 

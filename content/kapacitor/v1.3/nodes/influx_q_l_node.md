@@ -126,14 +126,14 @@ Properties
 ----------
 
 Property methods modify state on the calling node.
-They do not add another node to the pipeline, and always return a reference to the calling node.
+They do not add another node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the `.` operator.
 
 
 ### As
 
-The name of the field, defaults to the name of
-function used (i.e. .mean -&gt; &#39;mean&#39;)
+The name of the field.  Defaults to the name of
+function used (i.e. .mean -&gt; &#39;mean&#39;).    
 
 
 ```javascript

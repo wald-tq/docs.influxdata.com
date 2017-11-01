@@ -93,8 +93,8 @@ Example:
 
 
 The above example computes the requests per second by deployment and host.
-Then the total_requests per second across all hosts is computed per deployment.
-Using the mean of the total_requests over the last time period a desired number of replicas is computed
+Then the `total_requests` per second across all hosts is computed per deployment.
+Using the mean of the `total_requests` over the last time period a desired number of replicas is computed
 based on the target number of request per second per host.
 
 If the desired number of replicas has changed, Kapacitor makes the appropriate API call to Kubernetes
@@ -102,7 +102,7 @@ to update the replicas spec.
 
 Any time the k8sAutoscale node changes a replica count, it emits a point.
 The point is tagged with the namespace, kind and resource name,
-using the NamespaceTag, KindTag, and ResourceTag properties respectively.
+using the [NamespaceTag](#namespacetag), [KindTag](#kindtag), and [ResourceTag](#resourcetag) properties respectively.
 In addition the group by tags will be preserved on the emitted point.
 The point contains two fields: `old`, and `new` representing change in the replicas.
 
@@ -186,7 +186,7 @@ Properties
 ----------
 
 Property methods modify state on the calling node.
-They do not add another node to the pipeline, and always return a reference to the calling node.
+They do not add another node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the `.` operator.
 
 
@@ -225,7 +225,7 @@ node.currentField(value string)
 
 ### DecreaseCooldown
 
-Only one decrease event can be triggered per resource every DecreaseCooldown interval.
+Only one _decrease event_ can be triggered per resource every DecreaseCooldown interval.
 
 
 ```javascript
@@ -235,7 +235,7 @@ node.decreaseCooldown(value time.Duration)
 
 ### IncreaseCooldown
 
-Only one increase event can be triggered per resource every IncreaseCooldown interval.
+Only one _increase event_ can be triggered per resource every IncreaseCooldown interval.
 
 
 ```javascript

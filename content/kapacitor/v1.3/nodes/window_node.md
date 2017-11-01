@@ -23,11 +23,11 @@ A WindowNode caches data within a moving time range.
 | Setters | Description |
 |:-----------|:---|
 | **[align](#align)()** | Has no arguments. Sets a flag to align window edges with the property `every`. |
-| **[every](#every)(frequency `duration`)** | _frequency_ is the frequency at which the window is provided to the next node in the pipeline. |
-| **[everyCount](#everycount)(count `int64`)** | _count_ is a count of points to be processed before the current batch is provided to the next node in the pipeline. |
+| **[every](#every)( frequency `duration`)** | _frequency_ is the frequency at which the window is provided to the next node in the pipeline. |
+| **[everyCount](#everycount)( count `int64`)** | _count_ is a count of points to be processed before the current batch is provided to the next node in the pipeline. |
 | **[fillPeriod](#fillperiod)()** | Has no arguments. Sets a flag that will cause the WindowNode to wait until `period` has elapsed before providing the first batch.  |
-| **[period](#period)(length `duration`)** | _length_ is the length in time of the window. |
-| **[periodCount](#periodcount)(count `int64`)** | _count_ is the number of points per window. |
+| **[period](#period)( length `duration`)** | _length_ is the length in time of the window. |
+| **[periodCount](#periodcount)( count `int64`)** | _count_ is the number of points per window. |
 
 **Standard Chaining Methods:**
 
@@ -136,7 +136,7 @@ Properties
 ----------
 
 Property methods modify state on the calling node.
-They do not add another node to the pipeline, and always return a reference to the calling node.
+They do not add another node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the `.` operator.
 
 
@@ -144,7 +144,7 @@ Property methods are marked using the `.` operator.
 
 If the `align` property is not used to modify the `window` node, then the
 window alignment is assumed to start at the time of the first data point it receives.
-If `align` property is set, the window time edges
+If the `align` property is set, the window time edges
 will be truncated to the `every` property (For example, if the time of a data point
 is 12:06 and the `every` property is `5m` then window of the data point will range
 from 12:05 to 12:10).

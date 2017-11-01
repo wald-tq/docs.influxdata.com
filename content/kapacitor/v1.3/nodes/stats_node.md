@@ -70,9 +70,9 @@ Example:
      data...
 ```
 
-WARNING: It is not recommended to join the stats stream with the original data stream.
-Since they operate on different clocks a deadlock could potentially be created.
-This is a limitation of the current implementation and may be removed in the future.
+> WARNING: It is not recommended to join the stats stream with the original data stream.
+> Since they operate on different clocks, a deadlock could potentially be created.
+> This is a limitation of the current implementation and may be removed in the future.
 
 <!--
 Index

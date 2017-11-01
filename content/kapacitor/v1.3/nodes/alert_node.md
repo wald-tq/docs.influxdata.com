@@ -35,12 +35,12 @@ See [AlertNode.Info,](/kapacitor/v1.3/nodes/alert_node/#info) [AlertNode.Warn,](
 | **[id](#id)( template `string`)** | _template_ is a `string` template used to format the id. |
 | **[message](#message)( template `string`)** | _template_ is a `string` template used to format the message. |
 | **[details](#details)( template `string`)** | _template_ is a `string` template used to construct a detailed HTML message for the alert. |
-| **[durationField](#durationfield)( value `string` )** | _value_ represents an optional field key, containing the alert duration, to be added to the data.  |
-| **[idField]( #idfield)( value `string`)** | _value_ represents an optional field key, containing the alert ID, to be added to the data. |
-| **[idTag]( #idtag)( value `string`)** | _value_ represents an optional tag key, containing the alert ID, to be added to the data. |
-| **[levelField]( #levelfield)( value `string`)** | _value_ represents an optional field key, containing the alert level, to be added to the data. |
-| **[levelTag]( #leveltag)( value `string`)** | _value_ represents an optional tag key, containing the alert level, to be added to the data. |
-| **[messageField]( #messagefield)(value `string`)** | _value_ represents an optional field key, containing the alert message, to be added to the data. |
+| **[durationField](#durationfield)( key `string` )** | _key_ represents an optional field key, containing the alert duration, to be added to the data.  |
+| **[idField]( #idfield)( key `string`)** | _key_ represents an optional field key, containing the alert ID, to be added to the data. |
+| **[idTag]( #idtag)( key `string`)** | _key_ represents an optional tag key, containing the alert ID, to be added to the data. |
+| **[levelField]( #levelfield)( key `string`)** | _key_ represents an optional field key, containing the alert level, to be added to the data. |
+| **[levelTag]( #leveltag)( key `string`)** | _key_ represents an optional tag key, containing the alert level, to be added to the data. |
+| **[messageField]( #messagefield)( key `string`)** | _key_ represents an optional field key, containing the alert message, to be added to the data. |
 | <br/>**Processing Flags**<br/><br/> |
 | **[all](#all)()** | Has no arguments. With _batch_ data sets a flag indicating that all points in the batch should match the criteria. |
 | **[noRecoveries](#norecoveries)()** | Has no arguments.  Sets a flag indicating that recovery alerts will not be sent. |
@@ -59,8 +59,9 @@ See [AlertNode.Info,](/kapacitor/v1.3/nodes/alert_node/#info) [AlertNode.Warn,](
 | **[post](#post)( urls `...string`)** | _urls_ (optional) indicates the URL endpoints to which data will be sent in JSON format using HTTP POST.  Endpoint can also be configured on the returned handler using an `endpoint` setter.  |
 | **[tcp](#tcp)( address `string`)** | _address_ (optional) indicates the address to which the data will be sent over TCP.  Address can also be set on the returned handler using an `address` setter.  |
 | **[email](#email)( to `string`)** | _to_ (optional) indicates the address to which the data will be sent by email. If empty, settings from the Kapacitor configuration are used. |
-| **[snmpTrap](#snmptrap)(trap0id `string`)** | _trap0id_ sets the trap ID <!--  ASN and MIB files -->. Makes it possible to send unsolicited messages over SNMP. |
-| **[exec](#exec)(executable `string`, args `...string`)** | _executable_ is the executable to be executed.  _args_ are the arguments to be passed to it. |
+| **[snmpTrap](#snmptrap)( trap0id `string`)** | _trap0id_ sets the trap ID. Makes it possible to send unsolicited messages over SNMP. |
+| **[topic](#topic)( name `string` )** | _name_ is the name of a topic, to which the alert will be published, and to which another application might subscribe. |
+| **[exec](#exec)( executable `string`, args `...string`)** | _executable_ is the executable to be executed.  _args_ are the arguments to be passed to it. |
 | <br/>**Third Party Event Handlers**<br/><br/> | <br/>_Note that most third party event handlers are configured in the Kapacitor configuration file and by using internal properties._ |
 | **[alerta](#alerta)()** | Has no arguments.  Returned handler is configured using internal properties and through the Kapacitor configuration file. |
 | **[hipChat](#hipchat)()** | Has no arguments.  Returned handler is configured using internal properties and through the Kapacitor configuration file. |
@@ -121,7 +122,7 @@ Each event that gets sent to a handler contains the following alert data:
 * Time -- the time the alert occurred.
 * Duration -- the duration of the alert in nanoseconds.
 * Level -- one of OK, INFO, WARNING or CRITICAL.
-* Data -- influxql.Result containing the data that triggered the alert.
+* Data -- `influxql.Result` containing the data that triggered the alert.
 
 Events are sent to handlers if the alert is in a state other than &#39;OK&#39;
 or the alert just changed to the &#39;OK&#39; state from a non &#39;OK&#39; state (i.e. the alert recovered).
@@ -178,17 +179,17 @@ Example:
 ```
 
 For example given the following values:
-61 73 64 85 62 56 47
-The corresponding alert states are:
-INFO WARNING WARNING CRITICAL INFO INFO OK
+`{ 61, 73, 64, 85, 62, 56, 47, ... }`...  
+...the corresponding alert states are:
+`{ INFO, WARNING, WARNING, CRITICAL, INFO, INFO, OK, ... }`.
 
 Available Statistics:
 
-* alerts_triggered -- Total number of alerts triggered
-* oks_triggered -- Number of OK alerts triggered
-* infos_triggered -- Number of Info alerts triggered
-* warns_triggered -- Number of Warn alerts triggered
-* crits_triggered -- Number of Crit alerts triggered
+* alerts_triggered -- Total number of alerts triggered.
+* oks_triggered -- Number of OK alerts triggered.
+* infos_triggered -- Number of Info alerts triggered.
+* warns_triggered -- Number of Warn alerts triggered.
+* crits_triggered -- Number of Crit alerts triggered.
 
 
 <!--
@@ -287,7 +288,7 @@ Properties
 ----------
 
 Property methods modify state on the calling node.
-They do not add another node to the pipeline, and always return a reference to the calling node.
+They do not add another node to the pipeline and always return a reference to the calling node.
 Property methods are marked using the `.` operator.
 
 
@@ -307,9 +308,9 @@ Example:
       origin = "Kapacitor"
 ```
 
-In order to not post a message every alert interval
-use [AlertNode.StateChangesOnly](/kapacitor/v1.3/nodes/alert_node/#statechangesonly) so that only events
-where the alert changed state are sent to Alerta.
+In order to not post a message on every alert interval
+use [AlertNode.StateChangesOnly](/kapacitor/v1.3/nodes/alert_node/#statechangesonly) so that only events,
+where the alert changed state, are sent to Alerta.
 
 Send alerts to Alerta. The resource and event properties are required.
 
@@ -472,7 +473,7 @@ node.crit(value ast.LambdaNode)
 
 ### CritReset
 
-Filter expression for reseting the CRITICAL alert level to lower level.
+Filter expression for reseting the CRITICAL alert level to a lower level.
 
 
 ```javascript
@@ -644,7 +645,7 @@ node.exec(executable string, args ...string)
 ### Flapping
 
 Perform flap detection on the alerts.
-The method used is similar method to Nagios:
+The method used is a similar method to Nagios:
 https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/flapping.html
 
 Each different alerting level is considered a different state.
@@ -652,7 +653,7 @@ The low and high thresholds are inverted thresholds of a percentage of state cha
 Meaning that if the percentage of state changes goes above the `high`
 threshold, the alert enters a flapping state. The alert remains in the flapping state
 until the percentage of state changes goes below the `low` threshold.
-Typical values are low: 0.25 and high: 0.5. The percentage values represent the number state changes
+Typical values are low: 0.25 and high: 0.5. The percentage values represent the number of state changes
 over the total possible number of state changes. A percentage change of 0.5 means that the alert changed
 state in half of the recorded history, and remained the same in the other half of the history.
 
@@ -863,7 +864,7 @@ node.levelTag(value string)
 
 ### Log
 
-Log JSON alert data to file. One event per line.
+Log JSON alert data to a file. One event per line.
 Must specify the absolute path to the log file.
 It will be created if it does not exist.
 Example:
@@ -1004,7 +1005,7 @@ Example:
              .teams('team_rocket','team_test')
 ```
 
-Send alerts to OpsGenie with team set to &#39;team_rocket&#39; and &#39;team_test&#39;
+Send alerts to OpsGenie with team set to &#39;team_rocket&#39; and &#39;team_test&#39;.
 
 If the &#39;opsgenie&#39; section in the configuration has the option: global = true
 then all alerts are sent to OpsGenie without the need to explicitly state it
@@ -1067,7 +1068,7 @@ To use PagerDuty alerting, first follow the steps to enable a new &#39;Generic A
 From https://developer.pagerduty.com/documentation/integration/events
 
 1. When logged into an account, under the Services tab, click &#34;Add New Service&#34;.
-2. Enter a name for the service and select an escalation policy. Then, select &#34;Generic API&#34; for the Service Type.
+2. Enter a name for the service and select an escalation policy. Then select &#34;Generic API&#34; for the Service Type.
 3. Click the &#34;Add Service&#34; button.
 4. Once the service is created, the service page will load. On this page the &#34;Service key&#34;, which is needed to access the API, will be visible.
 
@@ -1407,7 +1408,7 @@ Example:
       channel = "#general"
 ```
 
-In order to not post a message every alert interval
+In order to not post a message at every alert interval
 use [AlertNode.StateChangesOnly](/kapacitor/v1.3/nodes/alert_node/#statechangesonly) so that only events
 where the alert changed state are posted to the channel.
 
@@ -1517,7 +1518,7 @@ node.slack()
 ### SnmpTrap
 
 Send the alert using SNMP traps.
-To allow Kapacitor to post SNMP traps,
+To allow Kapacitor to post SNMP traps enable them in the configuration file.
 
 Example:
 
@@ -1549,8 +1550,8 @@ node.snmpTrap(trapOid string)
 
 #### SnmpTrap Data
 
-Define Data for SNMP Trap alert.
-Multiple calls append to the existing list of data.
+Define Data for an SNMP Trap alert.
+Multiple calls append new data to the existing list of data.
 
 Available types:
 
@@ -1586,7 +1587,7 @@ node.snmpTrap(trapOid string)
 
 ### StateChangesOnly
 
-Only sends events where the state changed.
+Only sends events where the state has changed.
 Each different alert level OK, INFO, WARNING, and CRITICAL
 are considered different states.
 
@@ -1647,7 +1648,7 @@ node.stateChangesOnly(maxInterval ...time.Duration)
 Send the alert to Talk.
 To use Talk alerting, first follow the steps to create a new incoming webhook.
 
-1. Go to the URL https:/account.jianliao.com/signin.
+1. Go to the URL https://account.jianliao.com/signin.
 2. Sign in to an account. under the Team tab, click &#34;Integrations&#34;.
 3. Select &#34;Customize service&#34;, click incoming Webhook &#34;Add&#34; button.
 4. After choose the topic to connect with &#34;xxx&#34;, click &#34;Confirm Add&#34; button.
@@ -1707,8 +1708,8 @@ node.tcp(address string)
 ### Telegram
 
 Send the alert to Telegram.
-For step-by-step instructions on setting up Kapacitor with Telegram, see the Event Handler Setup Guide (https://docs.influxdata.com//kapacitor/latest/guides/event-handler-setup/#telegram-setup).
-To allow Kapacitor to post to Telegram,
+For step-by-step instructions on setting up Kapacitor with Telegram, see the Event Handler Setup Guide (https://docs.influxdata.com/kapacitor/latest/guides/event-handler-setup/#telegram-setup).
+To allow Kapacitor to post to Telegram enable it in the configuration file.
 
 Example:
 
@@ -1723,7 +1724,7 @@ Example:
 	disable-notification = false
 ```
 
-In order to not post a message every alert interval
+In order to not post a message at every alert interval
 use [AlertNode.StateChangesOnly](/kapacitor/v1.3/nodes/alert_node/#statechangesonly) so that only events
 where the alert changed state are posted to the chat-id.
 
@@ -1736,7 +1737,7 @@ Example:
              .telegram()
 ```
 
-Send alerts to Telegram chat-id in the configuration file.
+Send alerts to the Telegram chat-id in the configuration file.
 
 Example:
 
@@ -1748,7 +1749,7 @@ Example:
              .chatId('xxxxxxx')
 ```
 
-Send alerts to Telegram user/group &#39;xxxxxx&#39;
+Send alerts to the Telegram user/group &#39;xxxxxx&#39;
 
 If the &#39;telegram&#39; section in the configuration has the option: global = true
 then all alerts are sent to Telegram without the need to explicitly state it
@@ -1774,7 +1775,7 @@ Example:
          |alert()
 ```
 
-Send alert to Telegram using default chat-id &#39;xxxxxxxx&#39;.
+Send alert to Telegram using the default chat-id &#39;xxxxxxxx&#39;.
 
 
 ```javascript
@@ -1830,7 +1831,7 @@ node.telegram()
 
 ### Topic
 
-Topic specifies the name of an alert topic to which,
+Topic specifies the name of an alert topic to which
 alerts will be published.
 Alert handlers can be configured per topic, see the API documentation.
 
@@ -1880,7 +1881,7 @@ Example:
              .routingKey('team_rocket')
 ```
 
-Send alerts to VictorOps with routing key &#39;team_rocket&#39;
+Send alerts to VictorOps with the routing key &#39;team_rocket&#39;
 
 If the &#39;victorops&#39; section in the configuration has the option: global = true
 then all alerts are sent to VictorOps without the need to explicitly state it
@@ -1938,7 +1939,7 @@ node.warn(value ast.LambdaNode)
 
 ### WarnReset
 
-Filter expression for reseting the WARNING alert level to lower level.
+Filter expression for reseting the WARNING alert level to a lower level.
 
 
 ```javascript
@@ -2060,7 +2061,7 @@ Example:
     data...
 ```
 
-The `id` and `message` alert properties can be configured globally via the &#39;deadman&#39; configuration section.
+The `id` and `message` alert properties can be configured globally via the &#39;deadman&#39; section in the Kapacitor configuration file.
 
 Since the [AlertNode](/kapacitor/v1.3/nodes/alert_node/) is the last piece it can be further modified as usual.
 Example:
