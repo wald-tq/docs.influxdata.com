@@ -26,8 +26,8 @@ All lambda expressions in TICKscript begin with the `lambda:` keyword.
 .where(lambda: "host" == 'server001.example.com')
 ```
 
-In some nodes the results of a lambda expression can be captured as a named
-result using the property setter `.as()`.
+In some nodes the results of a lambda expression can be captured into a new
+field as a named result using the property setter `.as()`.
 In this way they can be used in other nodes further down the pipeline.  
 
 <!--
@@ -81,14 +81,16 @@ integers and floats are used within the same expression the integer values need
 to use the `float()` type conversion function if a float result is desired.
 Failure to observe this rule can yield unexpected results.  For example, when
 using a lambda expression to calculate a ratio between 0 and 1 of type float to
-use in generating a percentage and when the fields are of type integer, it might
+use in generating a percentage; and when the fields are of type integer, it might
 be assumed that a subset field can be divided by the total field to get the
-ratio.  Such an integer division by integer operation will result in an integer
-value of 0.  Furthermore multiplication of the result of such an operation by
-the literal `100` (an integer) will also result in 0.  Casting the integer
-values to float will result in a valid ratio in the range between 0 and 1, and
-then multiplication by the literal `100.0` (a float) will result in a valid
-percentage value.  Correctly written, such an operation should look like this:
+ratio( e.g. `subset/total * 100`).  Such an integer by integer division will
+result in an integer value of 0.  Furthermore multiplication of the result of 
+such an operation by the literal `100` (an integer) will also result in 0.
+Casting the integer values to float will result in a valid ratio in the range
+between 0 and 1, and then multiplication by the literal `100.0` (a float) will
+result in a valid percentage value.  Correctly written, such an operation should
+look like this:
+
 `eval(lambda: float("total_error_responses")/float("total_responses") * 100.0)`.
 
 If in the logs an error appears of the type `E! mismatched type to binary
