@@ -3,10 +3,10 @@ title: TICKscript Specification
 
 menu:
   kapacitor_1_3:
-    name: Specification
+    name: TICKscript Specification
     identifier: specification
     weight: 10
-    parent: tick
+    parent: reference
 ---
 
 Introduction
