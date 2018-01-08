@@ -8,78 +8,75 @@ menu:
 ---
 
 ## Overview
-New in version 1.5, the backup utility provides the option to run both backup and restore 
+New in version 1.5, the InfluxDB backup utility provides the option to run backup and restore 
 functions on a live database. It also provides features to backup and restore single or multiple
-databases, along with optional filtering based on data point time stamps. Finally, the backup tool supports 
-import of data from an [InfluxEnterprise](/enterprise/latest/) cluster, and it can also generate backup files
-that may be imported into an enterprise database.  The offline backup/restore functions
-provided in influxdb versions 1.4 and earlier are retained in version 1.5 without change, and 
-are detailed in the section titled [Backward Compatible Offline Backup/Restore](#legacy).  
+databases, along with optional filtering based on data point timestamps. Finally, the backup tool supports 
+import of data from an [InfluxEnterprise](/enterprise/latest/) cluster and can also generate backup files
+that may be imported into an InfluxDB Enterprise database.  The offline backup and restore functions
+provided in InfluxDB versions 1.4 and earlier are retained in version 1.5 without change, and 
+are detailed in [Backward Compatible Offline Backup/Restore](#legacy).  
 
-> **Note:** Prior to version 1.5, the open source backup tool created a different backup file format than 
-the enterprise version of influxdb. This document will refer to that format as the _legacy_ format.  The legacy
-format is fully supported, so that it may be provided as input to the new online restore function.  If creating a
-new backup process from scratch, we recommend using the new enterprise-compatible backup format, which uses less 
-disk space and also provides a clear transfer path for data between the enterprise and open source versions 
-of influxdb.  
+> **Note:** Prior to version 1.5, the InfluxDB OSS backup tool created a different backup file format than 
+the InfluxDB Enterprise version. This document will refer to that format as the _legacy_ format.  The legacy
+format is fully supported, so that it may be provided as input to the new online restore function.  If you are creating a
+new backup process from scratch, InfluxData recommends using the new InfluxDB Enterprise-compatible backup format, which uses less disk space and also provides a clear transfer path for data between the InfluxDB Enterprise and InfluxDB OSS versions.  
 >
 
 <h2 id="online">Enterprise Compatible Online Backup and Restore</h2>
 
 <h3 id="remoteconn">Configuring a Remote Connection</h3>
 The online backup and restore processes execute over a TCP connection to the database.  To enable 
-the port for the backup/restore service: 
+the port for the backup and restore service: 
 
 **1.** At the root level of the influxdb config file, uncomment the [`bind-address` configuration setting](/influxdb/v1.4/administration/config/#bind-address-127-0-0-1-8088) on the remote node  
 **2.** Update the `bind-address` value to `<remote-node-IP>:8088`  
-**3.** Provide the IP and port to the `-host` parameter when you run commands, for example:
+**3.** Provide the IP and port to the `-host` parameter when you run commands. For example:
 
 ```
 $ influxd backup -database mydatabase -host <remote-node-IP>:8088 /tmp/mysnapshot
 ```
 
 ### Backup
-The improved backup command is similar to previous versions of influxdb, except that it  
-which generates backups in an enterprise compatible format and has some new filtering options
+The improved `backup` command is similar to previous versions in InfluxDB, except that it  
+generates backups in an InfluxDB Enterprise-compatible format and has some new filtering options
 to constrain the range of data points that are exported to the backup.  
-It is invoked by the `influxd` binary using the -enterprise flag: 
+The InfluxDB Enterprise-compatible format is invoked by the `influxd` binary using the `-enterprise` flag: 
 
 ```
 influxd backup -enterprise [options] <path-to-backup>
 ```
 
 **Backup Arguments**
-- `-host <host:port>`- The host to connect to and perform a snapshot of. Defaults to '127.0.0.1:8088'.
+- `-host <host:port>`- The host to connect to and perform a snapshot of. Default value is '127.0.0.1:8088'.
 
 - `-database <name>`- The database to backup. Required.
 
 - `-retention <name>` - The retention policy to backup. Optional.
 
-- `-shard <id>` - The shard id to backup. Optional. If specified, '-retention <name>' is required.
+- `-shard <id>`: The shard ID to backup. Optional. If specified, `-retention <name>` is required.
 
-- `-since <2015-12-24T08:12:13Z>` - Do an incremental backup since the passed in time. The time needs to be in the RFC3339 format. Optional.
+- `-since <2015-12-24T08:12:13Z>`: Do an incremental backup since the specified timestamp. The specified time needs to be in the [RFC3339 format](https://www.ietf.org/rfc/rfc3339.txt). Optional.
 
-- `-start <2015-12-24T08:12:23Z>` - All points earlier than this time stamp will be excluded from the export. Not compatible with -since.
-- `-end <2015-12-24T08:12:23Z>` - All points later than this time stamp will be excluded from the export. Not compatible with -since.
-- `-enterprise` - Generate backup files in the format used for influxdb enterprise.
+- `-start <2015-12-24T08:12:23Z>`: All points earlier than this timestamp will be excluded from the export. Not compatible with `-since`.
+- `-end <2015-12-24T08:12:23Z>`: All points later than this timestamp will be excluded from the export. Not compatible with `-since`.
+- `-enterprise`: Generate backup files in the format used for InfluxDB Enterprise.
 
 ### Restore
-An online restore process is initiated by using either the -enterprise or -online flags.  The flags indicate that the input is 
-in either an enterprise backup format, or a legacy backup format, respectively.  It has the following options: 
+An online restore process is initiated by using either the `-enterprise` or `-online` flags.  The flags indicate that the input is either in an InfluxDB Enterprise backup format or a legacy backup format, respectively.  The restore process has the following options: 
 
-- `-host <host:port>`- The host to connect to and perform a snapshot of. Defaults to '127.0.0.1:8088'.
+- `-host <host:port>`: The host to connect to and perform a snapshot of. Default value is `'127.0.0.1:8088'`.
 
-- `-db    <name>`- Identifies the database from the backup that will be restored.
+- `-db <name>`: Identifies the database from the backup that will be restored.
 
-- `-newdb <name>`- The name of the database into which the archived data will be imported on the target system.
-	        If not given, then the value of -db is used.  The new database name must be unique to the target system.
+- `-newdb <name>`: The name of the database into which the archived data will be imported on the target system.
+	        If not given, then the value of `-db` is used.  The new database name must be unique to the target system.
 
-- `-rp    <name>`- Identifies the retention policy from the backup that will be restored.  Requires that -db is set.
+- `-rp <name>`: Identifies the retention policy from the backup that will be restored.  Requires that `-db` is set.
 
-- `-newrp <name>`- The name of the retention policy that will be created on the target system. Requires that -rp is set.
-	        If not given, the value of -rp is used.
+- `-newrp <name>`: The name of the retention policy that will be created on the target system. Requires that `-rp` is set.
+	        If not given, the value of `-rp` is used.
 
-- `-shard <id>`- Optional.  If given, -db and -rp are required.  Will restore the single shard's data.
+- `-shard <id>`: Will restore the single shard's data. Optional. If specified, `-db` and `-rp` are required.  
 
 > **Note:** Even if you have previous backup automation that supports the legacy format, you may wish to 
 test the new online feature for legacy backups.  It enables restoration of a single database to a running 
